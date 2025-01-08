@@ -4,7 +4,7 @@ const images = [
     '2.JPG',
     '3.JPG',
     '4.JPG',
-    '5.JPG' // Asegúrate de que los nombres y extensiones sean correctos
+    '5.JPG' // Asegúrate de que las imágenes estén correctamente nombradas
 ];
 
 let currentImageIndex = 0;
@@ -29,7 +29,7 @@ function changeImage() {
         // Si no se puede cargar la imagen
         imageElement.onerror = () => {
             console.error("Error al cargar la imagen: " + images[currentImageIndex]);
-            imageElement.src = "imagen (1).JPG"; // Cargar una imagen por defecto en caso de error
+            imageElement.src = "1.JPG"; // Cargar una imagen por defecto en caso de error
         };
 
     }, 1000); // Espera que termine el efecto de desvanecimiento (1 segundo)
