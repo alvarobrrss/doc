@@ -1,10 +1,10 @@
 // Lista de imágenes en la raíz del repositorio
 const images = [
-    'imagen (1).JPG',
-    'imagen (1).png',
-    'imagen (2).JPG',
-    'imagen (2).png',
-    'imagen (3).JPG' // Asegúrate de que los nombres y extensiones sean correctos
+    '1.JPG',
+    '2.JPG',
+    '3.JPG',
+    '4.JPG',
+    '5.JPG' // Asegúrate de que los nombres y extensiones sean correctos
 ];
 
 let currentImageIndex = 0;
