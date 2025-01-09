@@ -1,25 +1,40 @@
+/* Estilos básicos */
 body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Evitar barras de desplazamiento */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Asegurarse de que la página ocupe toda la altura de la ventana */
-    background-color: black; /* Fondo negro para el efecto de desvanecimiento */
+  margin: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.image-container {
-    width: 100%; /* Ocupa el 100% del ancho disponible */
-    height: 100%; /* Ocupa el 100% de la altura disponible */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.slideshow {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  max-width: 800px;
+  max-height: 600px;
+  overflow: hidden;
+  border: 5px solid #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
-#image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Mantiene la imagen dentro del contenedor sin deformarla ni recortarla */
-    transition: opacity 1s ease-out; /* Efecto de transición para el desvanecimiento */
+/* Estilo de las imágenes */
+.slideshow img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  filter: sepia(50%) contrast(1.2) brightness(0.9); 
 }
+
+/* Imagen visible */
+.slideshow img.active {
+  opacity: 1;
+}
+
