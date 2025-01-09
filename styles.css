@@ -48,13 +48,17 @@ body {
 }
 
 .vhs-link a {
-  font-size: 3rem;
-  color: white;
-  text-decoration: none;
+  display: inline-block;
 }
 
-.vhs-link a:hover {
-  color: #ffcc00; /* Color amarillo al pasar el mouse */
+.vhs-icon {
+  width: 50px; /* Ajusta el tamaño del icono según lo desees */
+  height: auto;
+  transition: transform 0.3s;
+}
+
+.vhs-icon:hover {
+  transform: scale(1.2); /* Aumenta el tamaño cuando el usuario pasa el ratón */
 }
 
 /* Mejoras para dispositivos móviles */
@@ -69,3 +73,4 @@ body {
     height: auto;
   }
 }
+
