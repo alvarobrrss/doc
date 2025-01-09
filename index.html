@@ -21,10 +21,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 3em;
+            font-size: 5em;
             text-align: center;
             color: white;
-            z-index: 10; /* Asegura que está encima de las imágenes */
+            z-index: 10;
         }
 
         /* Fondo de imágenes */
@@ -61,6 +61,7 @@
         #slideshow img:nth-child(3) { animation-delay: 20s; }
         #slideshow img:nth-child(4) { animation-delay: 30s; }
         #slideshow img:nth-child(5) { animation-delay: 40s; }
+
     </style>
 </head>
 <body>
@@ -91,17 +92,21 @@
                 return;
             }
 
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            // Convertimos el tiempo restante en horas y minutos
+            const totalHours = Math.floor(timeLeft / (1000 * 60 * 60)); // Total de horas
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); // Minutos restantes
 
+            // Ajustamos el formato a 00:00 (horas:minutos)
             document.getElementById("countdown").innerHTML = `
-                ${days} días, ${hours} horas, ${minutes} minutos
+                ${String(totalHours).padStart(3, '0')}:${String(minutes).padStart(2, '0')}
             `;
         }
 
         // Actualizar el contador cada segundo
         setInterval(updateCountdown, 1000);
+
+        // Inicializamos el contador al cargar la página
+        updateCountdown();
     </script>
 </body>
 </html>
