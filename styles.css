@@ -1,46 +1,3 @@
-/* Configuración básica */
-body {
-  margin: 0;
-  background-color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  overflow: hidden;
-  flex-direction: column;
-}
-
-/* Configuración del slideshow */
-.slideshow {
-  position: relative;
-  width: 90%;
-  height: 90%;
-  max-width: 800px;
-  max-height: 600px;
-  overflow: hidden;
-  border: 5px solid #fff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-  border-radius: 0;
-}
-
-/* Configuración de las imágenes */
-.slideshow img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
-}
-
-/* Imagen activa */
-.slideshow img.active {
-  opacity: 1;
-}
-
 /* Estilos para el icono de VHS */
 .vhs-link {
   margin-top: 20px;
@@ -59,18 +16,5 @@ body {
 
 .vhs-icon:hover {
   transform: scale(1.2); /* Aumenta el tamaño cuando el usuario pasa el ratón */
-}
-
-/* Mejoras para dispositivos móviles */
-@media (max-width: 768px) {
-  .slideshow {
-    width: 100%;
-    height: auto;
-    max-width: none;
-    max-height: 100%;
-  }
-  body {
-    height: auto;
-  }
 }
 
