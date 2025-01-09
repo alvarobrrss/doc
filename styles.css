@@ -1,12 +1,12 @@
-/* Estilos básicos */
 body {
   margin: 0;
-  background: black;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   overflow: hidden;
+  font-family: Arial, sans-serif;
 }
 
 .slideshow {
@@ -17,10 +17,10 @@ body {
   max-height: 600px;
   overflow: hidden;
   border: 5px solid #fff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 }
 
-/* Estilo de las imágenes */
+/* Estilización de las imágenes */
 .slideshow img {
   position: absolute;
   top: 0;
@@ -30,10 +30,11 @@ body {
   object-fit: cover;
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  filter: sepia(50%) contrast(1.2) brightness(0.9); 
+  filter: sepia(40%) contrast(1.2) brightness(0.85); 
+  background: rgba(0, 0, 0, 0.2); 
 }
 
-/* Imagen visible */
+/* Imagen actualmente activa */
 .slideshow img.active {
   opacity: 1;
 }
