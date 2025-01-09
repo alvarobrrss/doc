@@ -18,6 +18,7 @@ body {
   overflow: hidden;
   border: 5px solid #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  border-radius: 0; /* Eliminar bordes redondeados */
 }
 
 /* Configuración de las imágenes */
@@ -30,10 +31,23 @@ body {
   object-fit: cover; /* Asegura que las imágenes se ajusten al contenedor */
   opacity: 0;
   transition: opacity 1s ease-in-out;
- filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
+  filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
 }
 
 /* Imagen activa */
 .slideshow img.active {
   opacity: 1;
+}
+
+/* Mejoras para dispositivos móviles */
+@media (max-width: 768px) {
+  .slideshow {
+    width: 100%;
+    height: auto;
+    max-width: none;
+    max-height: 100%;
+  }
+  body {
+    height: auto;
+  }
 }
