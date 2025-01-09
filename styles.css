@@ -1,3 +1,4 @@
+/* Configuración básica */
 body {
   margin: 0;
   background-color: black;
@@ -6,7 +7,6 @@ body {
   align-items: center;
   height: 100vh;
   overflow: hidden;
-  font-family: Arial, sans-serif;
 }
 
 .slideshow {
@@ -20,22 +20,22 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 }
 
-/* Estilización de las imágenes */
+/* Configuración de las imágenes */
 .slideshow img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Asegura que las imágenes se ajusten al contenedor */
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  filter: sepia(40%) contrast(1.2) brightness(0.85); 
-  background: rgba(0, 0, 0, 0.2); 
+  filter: sepia(40%) contrast(1.2) brightness(0.85); /* Efecto antiguo */
 }
 
-/* Imagen actualmente activa */
+/* Imagen activa */
 .slideshow img.active {
   opacity: 1;
 }
+
 
