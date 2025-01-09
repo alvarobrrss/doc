@@ -30,7 +30,7 @@ body {
   object-fit: cover; /* Asegura que las imágenes se ajusten al contenedor */
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  filter: sepia(40%) contrast(1.2) brightness(0.85); /* Efecto antiguo */
+ filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
 }
 
 /* Imagen activa */
