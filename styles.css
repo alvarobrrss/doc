@@ -7,8 +7,10 @@ body {
   align-items: center;
   height: 100vh;
   overflow: hidden;
+  flex-direction: column;
 }
 
+/* Configuración del slideshow */
 .slideshow {
   position: relative;
   width: 90%;
@@ -18,7 +20,7 @@ body {
   overflow: hidden;
   border: 5px solid #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-  border-radius: 0; /* Eliminar bordes redondeados */
+  border-radius: 0;
 }
 
 /* Configuración de las imágenes */
@@ -28,7 +30,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Asegura que las imágenes se ajusten al contenedor */
+  object-fit: cover;
   opacity: 0;
   transition: opacity 1s ease-in-out;
   filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
@@ -37,6 +39,22 @@ body {
 /* Imagen activa */
 .slideshow img.active {
   opacity: 1;
+}
+
+/* Estilos para el icono de VHS */
+.vhs-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.vhs-link a {
+  font-size: 3rem;
+  color: white;
+  text-decoration: none;
+}
+
+.vhs-link a:hover {
+  color: #ffcc00; /* Color amarillo al pasar el mouse */
 }
 
 /* Mejoras para dispositivos móviles */
