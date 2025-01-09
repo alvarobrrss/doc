@@ -1,112 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documental Guijo de Granadilla</title>
-    <style>
-        /* General */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: black;
-            color: white;
-            font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Arial", sans-serif;
-            overflow: hidden;
-        }
-
-        /* Contador centrado */
-        #countdown {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 5em;
-            text-align: center;
-            color: white;
-            z-index: 10;
-        }
-
-        /* Fondo de imágenes */
-        #slideshow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        #slideshow img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            animation: fade 10s infinite;
-            filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
-        }
-
-        /* Animación del carrusel */
-        @keyframes fade {
-            0% { opacity: 1; }
-            20% { opacity: 1; }
-            25% { opacity: 0; }
-            95% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        /* Control de cada imagen */
-        #slideshow img:nth-child(1) { animation-delay: 0s; }
-        #slideshow img:nth-child(2) { animation-delay: 10s; }
-        #slideshow img:nth-child(3) { animation-delay: 20s; }
-        #slideshow img:nth-child(4) { animation-delay: 30s; }
-        #slideshow img:nth-child(5) { animation-delay: 40s; }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documental Guijo de Granadilla</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Contador -->
-    <div id="countdown"></div>
-
-    <!-- Carrusel de imágenes -->
-    <div id="slideshow">
-        <img src="1.JPG" alt="Imagen 1">
-        <img src="2.JPG" alt="Imagen 2">
-        <img src="3.JPG" alt="Imagen 3">
-        <img src="4.JPG" alt="Imagen 4">
-        <img src="5.JPG" alt="Imagen 5">
-    </div>
-
-    <script>
-        // Función para actualizar el contador
-        function updateCountdown() {
-            const targetDate = new Date("March 29, 2025 15:00:00").getTime();
-            const now = new Date().getTime();
-            const timeLeft = targetDate - now;
-
-            if (timeLeft <= 0) {
-                // Cuando termine el tiempo, oculta el contador y muestra fondo negro
-                document.getElementById("countdown").style.display = "none";
-                document.body.style.backgroundColor = "black"; // Asegura fondo negro
-                document.getElementById("slideshow").style.display = "none"; // Oculta el carrusel
-                return;
-            }
-
-            // Convertimos el tiempo restante en horas y minutos
-            const totalHours = Math.floor(timeLeft / (1000 * 60 * 60)); // Total de horas
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); // Minutos restantes
-
-            // Ajustamos el formato a 00:00 (horas:minutos)
-            document.getElementById("countdown").innerHTML = `
-                ${String(totalHours).padStart(3, '0')}:${String(minutes).padStart(2, '0')}
-            `;
-        }
-
-        // Actualizar el contador cada segundo
-        setInterval(updateCountdown, 1000);
-
-        // Inicializamos el contador al cargar la página
-        updateCountdown();
-    </script>
+  <div class="slideshow">
+    <img src="1.JPG" alt="Imagen 1">
+    <img src="2.JPG" alt="Imagen 2">
+    <img src="3.JPG" alt="Imagen 3">
+    <img src="4.JPG" alt="Imagen 4">
+    <img src="5.JPG" alt="Imagen 5">
+  </div>
 </body>
+<script src="script.js"></script>
 </html>
