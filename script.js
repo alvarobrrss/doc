@@ -1,5 +1,6 @@
+// Seleccionar todas las imágenes en la presentación
 const images = document.querySelectorAll(".slideshow img");
-let currentIndex = 0;
+let currentIndex = 0; // Índice de la imagen actual
 
 function showNextImage() {
   // Ocultar la imagen actual
@@ -12,13 +13,8 @@ function showNextImage() {
   images[currentIndex].classList.add("active");
 }
 
-// Mostrar la primera imagen al cargar la página
+// Inicializar la primera imagen como visible
 images[currentIndex].classList.add("active");
 
-// Cambiar imagen cada 10 segundos
+// Cambiar la imagen automáticamente cada 10 segundos
 setInterval(showNextImage, 10000);
-
-
-// Iniciar el cambio de imagen cada 10 segundos
-setInterval(changeImage, 10000); // Cambiar cada 10 segundos
-
