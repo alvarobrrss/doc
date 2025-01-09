@@ -1,10 +1,7 @@
-/* Fondo oscuro con una textura sutil */
+/* Configuración básica */
 body {
   margin: 0;
-  background-color: #111;
-  background-image: url('path/to/your/subtle-texture.jpg');
-  background-size: cover;
-  font-family: 'Arial', sans-serif;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +9,6 @@ body {
   overflow: hidden;
 }
 
-/* Contenedor de la presentación de diapositivas */
 .slideshow {
   position: relative;
   width: 90%;
@@ -22,21 +18,6 @@ body {
   overflow: hidden;
   border: 5px solid #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-  border-radius: 15px;
-}
-
-/* Fondo negro para fundido */
-.slideshow::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  z-index: 1;
 }
 
 /* Configuración de las imágenes */
@@ -46,11 +27,10 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Asegura que las imágenes se ajusten al contenedor */
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
-  z-index: 0;
+ filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
 }
 
 /* Imagen activa */
