@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>:)</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Slideshow VHS</title>
   <style>
     body {
       margin: 0;
@@ -12,25 +11,25 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: #000; /* Fondo negro para resaltar el estilo */
+      background-color: #000; /* Fondo negro */
     }
 
     .slideshow {
-      width: 280px; /* Ancho reducido al 70% del original (30% más pequeño) */
-      height: 186.67px; /* Altura ajustada para respetar proporción 3:2 */
+      width: 336px; /* Aumentado un 20% respecto al tamaño anterior (280px) */
+      height: 224px; /* Mantener proporción 3:2 con ajuste del 20% */
       overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 4px solid #444; /* Borde similar a una cinta VHS */
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Efecto sombra */
-      background-color: #222;
+      border: 6px solid #444; /* Borde más visible */
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.8); /* Efecto sombra más prominente */
+      background-color: #222; /* Fondo del contenedor */
     }
 
     .slideshow img {
-      width: 100%; /* Las imágenes se ajustan al ancho del contenedor */
-      height: auto; /* Mantener proporciones */
-      object-fit: cover; /* Recorta y ajusta las imágenes para llenar el espacio */
+      width: 100%; /* Las imágenes llenan el ancho del contenedor */
+      height: 100%; /* Las imágenes llenan la altura del contenedor */
+      object-fit: cover; /* Ajusta y recorta imágenes para llenar el contenedor */
     }
   </style>
 </head>
