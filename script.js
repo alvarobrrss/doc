@@ -1,7 +1,8 @@
-// Seleccionar todas las imágenes en la presentación
+// Seleccionar todas las imágenes
 const images = document.querySelectorAll(".slideshow img");
 let currentIndex = 0; // Índice de la imagen actual
 
+// Función para mostrar la siguiente imagen
 function showNextImage() {
   // Ocultar la imagen actual
   images[currentIndex].classList.remove("active");
@@ -14,7 +15,14 @@ function showNextImage() {
 }
 
 // Inicializar la primera imagen como visible
-images[currentIndex].classList.add("active");
+function initSlideshow() {
+  if (images.length > 0) {
+    images[0].classList.add("active"); // Activa la primera imagen
+    setInterval(showNextImage, 10000); // Cambia de imagen cada 10 segundos
+  } else {
+    console.error("No se encontraron imágenes en el slideshow.");
+  }
+}
 
-// Cambiar la imagen automáticamente cada 10 segundos
-setInterval(showNextImage, 10000);
+// Llamar a la función de inicialización al cargar la página
+document.addEventListener("DOMContentLoaded", initSlideshow);
