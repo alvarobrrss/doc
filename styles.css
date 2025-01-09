@@ -2,38 +2,32 @@
 body {
   margin: 0;
   background-color: black;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  overflow: hidden;
+  position: relative;
 }
 
 .slideshow {
-  position: relative;
-  width: 90%;
-  height: 90%;
-  max-width: 800px;
-  max-height: 600px;
-  overflow: hidden;
-  border: 5px solid #fff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Asegura que esté detrás del reloj */
 }
 
-/* Configuración de las imágenes */
 .slideshow img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Asegura que las imágenes se ajusten al contenedor */
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
- filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
-}
+  object-fit: cover; /* Asegura que las imágenes se ajusten al contenedor */\n  opacity: 0;\n  transition: opacity 1s ease-in-out;\n  filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);\n}
 
-/* Imagen activa */
-.slideshow img.active {
-  opacity: 1;
-}
+.slideshow img.active {\n  opacity: 1;\n}
+
+.clock {\n  font-family: 'Arial', sans-serif;\n  font-size: 5em;\n  color: white;\n  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);\n  z-index: 1; /* Asegura que esté sobre las imágenes */\n  position: relative;\n}
+
