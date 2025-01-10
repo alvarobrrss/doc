@@ -17,7 +17,7 @@ function showNextImage() {
 // Inicializar la primera imagen como visible
 function initSlideshow() {
   if (images.length > 0) {
-    setInterval(showNextImage, 10000); // Cambia de imagen cada 10 segundos
+    setInterval(showNextImage, 3000); // Cambia de imagen cada 10 segundos
   } else {
     console.error("No se encontraron imágenes en el slideshow.");
   }
