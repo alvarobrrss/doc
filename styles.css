@@ -25,9 +25,21 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Asegura que las imágenes se ajusten al contenedor */\n  opacity: 0;\n  transition: opacity 1s ease-in-out;\n  filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);\n}
+  object-fit: cover; /* Asegura que las imágenes se ajusten al contenedor */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  filter: sepia(80%) contrast(1.2) brightness(0.7) grayscale(40%) blur(2px); /* Aspecto antiguo */
+}
 
-.slideshow img.active {\n  opacity: 1;\n}
+.slideshow img.active {
+  opacity: 1;
+}
 
-.clock {\n  font-family: 'Arial', sans-serif;\n  font-size: 5em;\n  color: white;\n  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);\n  z-index: 1; /* Asegura que esté sobre las imágenes */\n  position: relative;\n}
-
+.clock {
+  font-family: 'Arial', sans-serif;
+  font-size: 5em;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  z-index: 1; /* Asegura que esté sobre las imágenes */
+  position: relative;
+}
