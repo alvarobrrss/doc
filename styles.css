@@ -11,6 +11,7 @@ body {
   height: 100vh;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -50,3 +51,15 @@ body {
   position: relative;
 }
 
+.timer-icon {
+  font-size: 2em;
+  color: white;
+  text-decoration: none;
+  margin-top: 10px;
+  z-index: 1;
+  position: relative;
+}
+
+.timer-icon:hover {
+  color: #FFD700; /* Cambia el color al pasar el mouse */
+}
