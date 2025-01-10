@@ -49,6 +49,21 @@ body {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
   z-index: 1; /* Asegura que esté sobre las imágenes */
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;  /* Ajuste de tamaño para el ícono */
+  margin-left: 10px;
+  z-index: 1;
+}
+
+.clock a:hover {
+  color: #FFD700;  /* Color al pasar el mouse sobre el ícono */
 }
 
 .timer-icon {
