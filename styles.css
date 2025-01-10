@@ -1,3 +1,9 @@
+/* Incluir la fuente Digital-7 */
+@font-face {
+  font-family: 'Digital-7';
+  src: url('digital-7.ttf') format('truetype'); /* Ruta directa al archivo digital-7.ttf */
+}
+
 /* Configuración básica */
 body {
   margin: 0;
@@ -28,7 +34,7 @@ body {
   object-fit: cover; /* Asegura que las imágenes se ajusten al contenedor */
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  filter: sepia(80%) contrast(1.2) brightness(0.7) grayscale(40%) blur(2px); /* Aspecto antiguo */
+  filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
 }
 
 .slideshow img.active {
@@ -36,10 +42,11 @@ body {
 }
 
 .clock {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Digital-7', sans-serif; /* Aplicar la fuente Digital-7 */
   font-size: 5em;
   color: white;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
   z-index: 1; /* Asegura que esté sobre las imágenes */
   position: relative;
 }
+
