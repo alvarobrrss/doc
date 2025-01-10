@@ -17,7 +17,6 @@ function showNextImage() {
 // Inicializar la primera imagen como visible
 function initSlideshow() {
   if (images.length > 0) {
-    images[0].classList.add("active"); // Activa la primera imagen
     setInterval(showNextImage, 10000); // Cambia de imagen cada 10 segundos
   } else {
     console.error("No se encontraron imágenes en el slideshow.");
