@@ -23,18 +23,10 @@ function initSlideshow() {
   }
 }
 
-// Función para actualizar el reloj
-function updateClock() {
-  const clock = document.querySelector('.clock');
-  const now = new Date();
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  const seconds = String(now.getSeconds()).padStart(2, '0');
-  clock.textContent = `${hours}:${minutes}:${seconds}`;
-}
-
-// Inicializar todo al cargar la página
+// Establecer el reloj siempre a 00:00:00
 document.addEventListener("DOMContentLoaded", () => {
   initSlideshow();
-  setInterval(updateClock, 1000); // Actualizar el reloj cada segundo
+  const clock = document.querySelector('.clock');
+  clock.textContent = "00:00:00"; // Establecer el reloj a 00:00:00
 });
+
