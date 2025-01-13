@@ -42,6 +42,10 @@ body {
   opacity: 1;
 }
 
+.clock-link {
+  text-decoration: none; /* Quitar subrayado del enlace */
+}
+
 .clock {
   font-family: 'Digital-7', sans-serif; /* Aplicar la fuente Digital-7 */
   font-size: 5em;
@@ -54,27 +58,7 @@ body {
   align-items: center;
 }
 
-.clock a {
-  color: white;
-  text-decoration: none;
-  font-size: 1em;  /* Ajuste de tamaño para el ícono */
-  margin-left: 10px;
-  z-index: 1;
-}
-
-.clock a:hover {
-  color: #FFD700;  /* Color al pasar el mouse sobre el ícono */
-}
-
-.timer-icon {
-  font-size: 2em;
-  color: white;
-  text-decoration: none;
-  margin-top: 10px;
-  z-index: 1;
-  position: relative;
-}
-
-.timer-icon:hover {
+.clock:hover {
   color: #FFD700; /* Cambia el color al pasar el mouse */
 }
+
