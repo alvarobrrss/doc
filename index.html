@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <audio id="background-music" src="musiquilla.mp3" autoplay></audio>
+  <audio id="background-music" src="tu_musica.mp3" autoplay></audio>
   <div class="slideshow">
     <img src="imagenesdesenfocadas80/imagen (1).jpg" alt="Imagen 1" class="active">
     <img src="imagenesdesenfocadas80/imagen (2).jpg" alt="Imagen 2">
@@ -50,8 +50,8 @@
     <img src="imagenesdesenfocadas80/imagen (38).jpg" alt="Imagen 38">
   </div>
   <a href="https://www.youtube.com/watch?v=r5LPEGYdo0M" target="_blank" class="clock-link">
-    <div class="clock" aria-label="Reloj mostrando la hora actual">
-      00:00:00
+    <div class="clock" aria-label="Fecha mostrando datos aleatorios">
+      01/01/1970
     </div>
   </a>
 </body>
@@ -71,18 +71,18 @@
     }
   }
 
-  function generateRandomTime() {
-    const hours = Math.floor(Math.random() * 24).toString().padStart(2, "0");
-    const minutes = Math.floor(Math.random() * 60).toString().padStart(2, "0");
-    const seconds = Math.floor(Math.random() * 60).toString().padStart(2, "0");
-    return `${hours}:${minutes}:${seconds}`;
+  function generateRandomDate() {
+    const day = Math.floor(Math.random() * 31 + 1).toString().padStart(2, "0");
+    const month = Math.floor(Math.random() * 12 + 1).toString().padStart(2, "0");
+    const year = Math.floor(Math.random() * (2031)).toString().padStart(4, "0");
+    return `${day}/${month}/${year}`;
   }
 
-  function initBrokenClock() {
+  function initBrokenDate() {
     const clock = document.querySelector('.clock');
     setInterval(() => {
-      clock.textContent = generateRandomTime();
-    }, 100);
+      clock.textContent = generateRandomDate();
+    }, 50);
   }
 
   function initMusic() {
@@ -96,9 +96,8 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     initSlideshow();
-    initBrokenClock();
+    initBrokenDate();
     initMusic();
   });
 </script>
 </html>
-
