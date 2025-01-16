@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <audio id="background-music" src="musiquilla.mp3" autoplay></audio>
   <div class="slideshow">
     <img src="imagenesdesenfocadas80/imagen (1).jpg" alt="Imagen 1" class="active">
     <img src="imagenesdesenfocadas80/imagen (2).jpg" alt="Imagen 2">
@@ -54,5 +55,50 @@
     </div>
   </a>
 </body>
-<script src="script.js"></script>
+<script>
+  const images = document.querySelectorAll(".slideshow img");
+  let currentIndex = 0;
+
+  function showNextImage() {
+    images[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % images.length;
+    images[currentIndex].classList.add("active");
+  }
+
+  function initSlideshow() {
+    if (images.length > 0) {
+      setInterval(showNextImage, 3000);
+    }
+  }
+
+  function generateRandomTime() {
+    const hours = Math.floor(Math.random() * 24).toString().padStart(2, "0");
+    const minutes = Math.floor(Math.random() * 60).toString().padStart(2, "0");
+    const seconds = Math.floor(Math.random() * 60).toString().padStart(2, "0");
+    return `${hours}:${minutes}:${seconds}`;
+  }
+
+  function initBrokenClock() {
+    const clock = document.querySelector('.clock');
+    setInterval(() => {
+      clock.textContent = generateRandomTime();
+    }, 100);
+  }
+
+  function initMusic() {
+    const music = document.getElementById('background-music');
+    music.loop = true;
+    music.autoplay = true;
+    music.play().catch(error => {
+      console.error("Autoplay falló debido a restricciones del navegador:", error);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initSlideshow();
+    initBrokenClock();
+    initMusic();
+  });
+</script>
 </html>
+
