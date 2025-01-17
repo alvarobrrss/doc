@@ -27,7 +27,46 @@ function initBrokenClock() {
   }, 5000);
 }
 
+function showNextImage() {
+  const images = document.querySelectorAll(".slideshow img");
+  let currentIndex = 0;
+
+  if (images.length > 0) {
+    images[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % images.length;
+    images[currentIndex].classList.add("active");
+  }
+}
+
+function initSlideshow() {
+  const images = document.querySelectorAll(".slideshow img");
+  if (images.length > 0) {
+    setInterval(showNextImage, 3000);
+  }
+}
+
+function initMusic() {
+  const music = document.getElementById('background-music');
+  music.loop = true;
+  music.autoplay = true;
+  music.play().catch(() => {
+    const playButton = document.createElement('button');
+    playButton.textContent = "Reproducir música";
+    playButton.style.position = 'absolute';
+    playButton.style.zIndex = 10;
+    playButton.style.top = '20px';
+    playButton.style.right = '20px';
+    playButton.addEventListener('click', () => {
+      music.play();
+      playButton.remove();
+    });
+    document.body.appendChild(playButton);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initSlideshow();
   initBrokenClock();
+  initMusic();
 });
+
