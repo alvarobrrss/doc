@@ -23,7 +23,7 @@ function initBrokenClock() {
 
     setTimeout(() => {
       isPaused = false;
-    }, 1000);
+    }, 2000); // Pausa de 2 segundos
   }, 5000);
 }
 
@@ -69,4 +69,3 @@ document.addEventListener("DOMContentLoaded", () => {
   initBrokenClock();
   initMusic();
 });
-
