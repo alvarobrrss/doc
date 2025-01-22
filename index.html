@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documental del Pueblo</title>
+  <title>:)</title>
+  <link rel="icon" href="vhs.ico" type="image/png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <audio id="background-music" src="musiquilla.mp3" autoplay loop></audio>
-
+  <audio id="background-music" src="musiquilla.mp3" autoplay></audio>
   <div class="slideshow">
     <img src="imagenesdesenfocadas80/imagen (1).jpg" alt="Imagen 1" class="active">
     <img src="imagenesdesenfocadas80/imagen (2).jpg" alt="Imagen 2">
@@ -49,37 +49,74 @@
     <img src="imagenesdesenfocadas80/imagen (37).jpg" alt="Imagen 37">
     <img src="imagenesdesenfocadas80/imagen (38).jpg" alt="Imagen 38">
   </div>
+  
+  <a href="https://www.youtube.com/watch?v=r5LPEGYdo0M" target="_blank" class="clock-link">
+    <div class="clock" aria-label="Fecha mostrando datos aleatorios">
+      01/01/1970
+    </div>
+  </a>
 
-  <div class="content">
-    <h1>Documental del Pueblo</h1>
-    <p>¡Colabora con nuestro documental! Sube tus fotos o videos.</p>
-
-    <form action="upload.php" method="POST" enctype="multipart/form-data">
-      <label for="file-upload" class="custom-file-upload">
-        Subir archivo
-      </label>
-      <input type="file" name="file" id="file-upload" accept="image/*,video/*" required>
-      <button type="submit">Enviar</button>
-    </form>
+  <!-- Formulario de carga de archivos -->
+  <div class="upload-container">
+    <label for="file-upload" class="upload-button">Sube tu archivo</label>
+    <input type="file" id="file-upload" class="file-upload" name="file" />
   </div>
-
-  <script>
-    const images = document.querySelectorAll(".slideshow img");
-    let currentIndex = 0;
-
-    function showNextImage() {
-      images[currentIndex].classList.remove("active");
-      currentIndex = (currentIndex + 1) % images.length;
-      images[currentIndex].classList.add("active");
-    }
-
-    function initSlideshow() {
-      if (images.length > 0) {
-        setInterval(showNextImage, 3000);
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", initSlideshow);
-  </script>
+  
 </body>
+<script>
+  const images = document.querySelectorAll(".slideshow img");
+  let currentIndex = 0;
+
+  function showNextImage() {
+    images[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % images.length;
+    images[currentIndex].classList.add("active");
+  }
+
+  function initSlideshow() {
+    if (images.length > 0) {
+      setInterval(showNextImage, 3000);
+    }
+  }
+
+  function generateRandomDate() {
+    const day = Math.floor(Math.random() * 31 + 1).toString().padStart(2, "0");
+    const month = Math.floor(Math.random() * 12 + 1).toString().padStart(2, "0");
+    const year = Math.floor(Math.random() * (2031)).toString().padStart(4, "0");
+    return `${day}/${month}/${year}`;
+  }
+
+  function initBrokenDate() {
+    const clock = document.querySelector('.clock');
+    setInterval(() => {
+      clock.textContent = generateRandomDate();
+    }, 50);
+  }
+
+  function initMusic() {
+    const music = document.getElementById('background-music');
+    music.loop = true;
+    music.autoplay = true;
+    music.play().catch(error => {
+      console.error("Autoplay falló debido a restricciones del navegador:", error);
+    });
+  }
+
+  // Subida de archivos
+  const fileInput = document.getElementById('file-upload');
+  fileInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      console.log('Archivo seleccionado:', file.name);
+      // Aquí puedes agregar más lógica para enviar el archivo a un servidor si lo deseas
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initSlideshow();
+    initBrokenDate();
+    initMusic();
+  });
+</script>
 </html>
+
