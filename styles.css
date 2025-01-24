@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'SK Pupok Solid';
+  src: url('./SK Pupok Solid 400.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   background-color: black;
@@ -40,7 +47,7 @@ body {
 }
 
 .clock {
-  font-family: 'Digital-7', sans-serif;
+  font-family: 'SK Pupok Solid', sans-serif;
   font-size: 5em;
   color: white;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
@@ -75,4 +82,3 @@ body {
 .upload-container input[type="file"]:hover {
   background-color: #FFD700;
 }
-
