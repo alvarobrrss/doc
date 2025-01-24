@@ -1,3 +1,4 @@
+/* Importar la fuente personalizada */
 @font-face {
   font-family: 'SK Pupok Solid';
   src: url('./SK Pupok Solid 400.ttf') format('truetype');
@@ -5,47 +6,51 @@
   font-style: normal;
 }
 
+/* Estilo base */
 body {
   margin: 0;
-  background-color: black;
-  height: 100vh;
   overflow: hidden;
+  height: 100vh;
+  background: #000;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: Arial, sans-serif;
   position: relative;
 }
 
-.slideshow {
-  position: fixed;
+/* Fondo interactivo */
+.background {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+  width: 200%;
+  height: 200%;
+  background-image: url('imagenesdesenfocadas80/imagen (1).jpg'); /* Cambia por tu imagen */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.1s ease-out;
+  z-index: -2;
 }
 
-.slideshow img {
+/* Efecto de grano */
+.grain {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+  mix-blend-mode: overlay;
+  z-index: -1;
+  transition: all 0.2s ease-out;
 }
 
-.slideshow img.active {
-  opacity: 1;
-}
-
-.clock-link {
-  text-decoration: none;
-}
-
+/* Estilo del reloj */
 .clock {
   font-family: 'SK Pupok Solid', sans-serif;
   font-size: 5em;
@@ -62,6 +67,7 @@ body {
   color: #FFD700;
 }
 
+/* Botón de carga de archivos */
 .upload-container {
   margin-top: 20px;
   text-align: center;
