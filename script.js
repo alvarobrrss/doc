@@ -1,3 +1,21 @@
+// Movimiento del fondo interactivo
+const background = document.querySelector('.background');
+const grain = document.querySelector('.grain');
+
+document.addEventListener('mousemove', (e) => {
+  const x = (e.clientX / window.innerWidth) * 100;
+  const y = (e.clientY / window.innerHeight) * 100;
+
+  // Movimiento del fondo
+  background.style.transform = `translate(-${x / 2}%, -${y / 2}%)`;
+
+  // Movimiento del grano
+  grain.style.background = `
+    radial-gradient(circle at ${x}% ${y}%, rgba(255, 255, 255, 0.2), transparent)
+  `;
+});
+
+// Generador de fechas aleatorias (reloj roto)
 function generateRandomDate() {
   const day = Math.floor(Math.random() * 28 + 1).toString().padStart(2, "0");
   const month = Math.floor(Math.random() * 12 + 1).toString().padStart(2, "0");
@@ -27,24 +45,7 @@ function initBrokenClock() {
   }, 5000);
 }
 
-function showNextImage() {
-  const images = document.querySelectorAll(".slideshow img");
-  let currentIndex = 0;
-
-  if (images.length > 0) {
-    images[currentIndex].classList.remove("active");
-    currentIndex = (currentIndex + 1) % images.length;
-    images[currentIndex].classList.add("active");
-  }
-}
-
-function initSlideshow() {
-  const images = document.querySelectorAll(".slideshow img");
-  if (images.length > 0) {
-    setInterval(showNextImage, 3000);
-  }
-}
-
+// Música de fondo
 function initMusic() {
   const music = document.getElementById('background-music');
   music.loop = true;
@@ -64,8 +65,18 @@ function initMusic() {
   });
 }
 
+// Subida de archivos
+const fileInput = document.getElementById('file-upload');
+fileInput.addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    console.log('Archivo seleccionado:', file.name);
+  }
+});
+
+// Inicialización
 document.addEventListener("DOMContentLoaded", () => {
-  initSlideshow();
   initBrokenClock();
   initMusic();
 });
+
