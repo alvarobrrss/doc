@@ -3,20 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fondo Interactivo</title>
+  <title>Reloj Interactivo</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <audio id="background-music" src="musiquilla.mp3" autoplay></audio>
 
-  <!-- Fondo interactivo -->
   <div class="background"></div>
   <div class="grain"></div>
 
-  <!-- Título -->
-  <h1 class="clock">01/01/1970</h1>
+  <div class="slideshow">
+    <img src="imagenesdesenfocadas80/imagen (1).jpg" alt="Imagen 1" class="active">
+    <img src="imagenesdesenfocadas80/imagen (2).jpg" alt="Imagen 2">
+    <img src="imagenesdesenfocadas80/imagen (3).jpg" alt="Imagen 3">
+    <img src="imagenesdesenfocadas80/imagen (4).jpg" alt="Imagen 4">
+    <img src="imagenesdesenfocadas80/imagen (5).jpg" alt="Imagen 5">
+    <img src="imagenesdesenfocadas80/imagen (6).jpg" alt="Imagen 6">
+    <img src="imagenesdesenfocadas80/imagen (7).jpg" alt="Imagen 7">
+    <img src="imagenesdesenfocadas80/imagen (8).jpg" alt="Imagen 8">
+    <img src="imagenesdesenfocadas80/imagen (9).jpg" alt="Imagen 9">
+    <img src="imagenesdesenfocadas80/imagen (10).jpg" alt="Imagen 10">
+  </div>
 
-  <!-- Botón de carga de archivos -->
+  <a href="https://www.youtube.com/watch?v=r5LPEGYdo0M" target="_blank" class="clock-link">
+    <div class="clock">01/01/1970</div>
+  </a>
+
   <div class="upload-container">
     <input type="file" id="file-upload" class="file-upload" name="file" />
   </div>
