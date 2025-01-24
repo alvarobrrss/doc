@@ -1,21 +1,20 @@
-// Movimiento del fondo interactivo
 const background = document.querySelector('.background');
 const grain = document.querySelector('.grain');
+const images = document.querySelectorAll(".slideshow img");
+let currentIndex = 0;
+
+function showNextImage() {
+  images[currentIndex].classList.remove("active");
+  currentIndex = (currentIndex + 1) % images.length;
+  images[currentIndex].classList.add("active");
+}
 
 document.addEventListener('mousemove', (e) => {
-  const x = (e.clientX / window.innerWidth) * 100;
-  const y = (e.clientY / window.innerHeight) * 100;
-
-  // Movimiento del fondo
-  background.style.transform = `translate(-${x / 2}%, -${y / 2}%)`;
-
-  // Movimiento del grano
-  grain.style.background = `
-    radial-gradient(circle at ${x}% ${y}%, rgba(255, 255, 255, 0.2), transparent)
-  `;
+  const x = (e.clientX / window.innerWidth - 0.5) * 10;
+  const y = (e.clientY / window.innerHeight - 0.5) * 10;
+  background.style.transform = `translate(${x}px, ${y}px) scale(1.1)`;
 });
 
-// Generador de fechas aleatorias (reloj roto)
 function generateRandomDate() {
   const day = Math.floor(Math.random() * 28 + 1).toString().padStart(2, "0");
   const month = Math.floor(Math.random() * 12 + 1).toString().padStart(2, "0");
@@ -41,11 +40,10 @@ function initBrokenClock() {
 
     setTimeout(() => {
       isPaused = false;
-    }, 2000); // Pausa de 2 segundos
+    }, 2000);
   }, 5000);
 }
 
-// Música de fondo
 function initMusic() {
   const music = document.getElementById('background-music');
   music.loop = true;
@@ -65,7 +63,6 @@ function initMusic() {
   });
 }
 
-// Subida de archivos
 const fileInput = document.getElementById('file-upload');
 fileInput.addEventListener('change', (event) => {
   const file = event.target.files[0];
@@ -74,9 +71,10 @@ fileInput.addEventListener('change', (event) => {
   }
 });
 
-// Inicialización
 document.addEventListener("DOMContentLoaded", () => {
+  setInterval(showNextImage, 3000);
   initBrokenClock();
   initMusic();
 });
+
 
