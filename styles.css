@@ -1,11 +1,4 @@
 @font-face {
-  font-family: 'DxGlitar';
-  src: url('./DxGlitar-free-font.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'Monofonto';
   src: url('./monofonto rg.otf') format('opentype');
   font-weight: normal;
@@ -80,13 +73,45 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 20px;
 }
 
 .clock {
-  font-family: 'DxGlitar', sans-serif; /* Fuente personalizada */
-  font-size: 2.5em; /* Tamaño reducido */
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 5em;
   color: white;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
   position: relative;
   text-align: center;
+}
+
+.clock:hover {
+  color: #FFD700;
+}
+
+.upload-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.file-upload {
+  display: none;
+}
+
+.upload-button {
+  background-color: transparent;
+  border: 2px solid #FFD700;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  letter-spacing: -0.5px;
+  font-size: 1.2em;
+  text-align: center;
+  display: inline-block;
+}
+
+.upload-button:hover {
+  background-color: #FFD700;
+  color: black;
+}
