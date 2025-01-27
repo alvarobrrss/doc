@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'HelveticaNeueBold';
+  font-family: 'Helvetica Neue';
   src: url('./HelveticaNeueBold.otf') format('opentype');
-  font-weight: bold;
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -15,8 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  border: 2px solid #4827b8;
-  box-sizing: border-box;
+  border: 4px solid #4827b8;
 }
 
 .background {
@@ -38,8 +37,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('grain.png') repeat;
-  opacity: 0.1;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+  mix-blend-mode: overlay;
   pointer-events: none;
   z-index: -1;
 }
@@ -71,30 +70,30 @@ body {
 
 .clock-link {
   text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-  z-index: 1;
 }
 
 .clock {
-  font-family: 'HelveticaNeueBold', sans-serif;
+  font-family: 'Helvetica Neue', sans-serif;
   font-size: 5em;
   color: white;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-  text-align: center;
-  margin: 0 auto;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border-color 0.3s ease;
+  border: 3px solid transparent;
 }
 
 .clock:hover {
-  color: #4827b8;
+  color: #FFD700;
+  border-color: #4827b8;
 }
 
 .upload-container {
+  margin-top: 20px;
   text-align: center;
-  margin-top: 10px;
 }
 
 .file-upload {
@@ -103,35 +102,52 @@ body {
 
 .upload-button {
   background-color: transparent;
-  border: 2px solid #FFD700;
+  border: 2px solid #4827b8;
   border-radius: 8px;
-  padding: 8px 16px; /* Botón más pequeño */
+  padding: 8px 20px;
   cursor: pointer;
-  color: white;
-  font-family: 'HelveticaNeueBold', sans-serif;
-  letter-spacing: -0.5px;
-  font-size: 1em;
-  text-align: center;
-  display: inline-block;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 1.2em;
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
 .upload-button:hover {
   background-color: #4827b8;
-  border-color: #4827b8;
   color: white;
+  border-color: #4827b8;
 }
 
-@media screen and (max-width: 768px) {
+.upload-button {
+  font-weight: bold;
+}
+
+.upload-container input[type="file"] {
+  display: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Helvetica Neue', sans-serif;
+  border: 4px solid #4827b8;
+}
+
+.upload-container button {
+  font-family: 'Helvetica Neue', sans-serif;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
   .clock {
-    font-size: 3em;
+    font-size: 4em;
   }
+
   .upload-button {
-    font-size: 0.9em;
-    padding: 6px 12px;
+    font-size: 1em;
+    padding: 6px 15px;
   }
 }
 
-.upload-button:hover {
-  background-color: #FFD700;
-  color: black;
-}
