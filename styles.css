@@ -36,8 +36,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
-  mix-blend-mode: overlay;
+  background: url('grain.png') repeat;
+  opacity: 0.1; /* Aseguramos que sea visible */
   pointer-events: none;
   z-index: -1;
 }
@@ -96,14 +96,18 @@ body {
   display: none;
 }
 
-.upload-container input[type="file"] {
+#upload-button {
   background-color: transparent;
   border: 2px solid #FFD700;
   border-radius: 8px;
-  padding: 10px;
+  padding: 10px 20px;
   cursor: pointer;
+  color: white;
+  font-family: 'Monofonto', sans-serif;
+  font-size: 1.2em;
 }
 
-.upload-container input[type="file"]:hover {
+#upload-button:hover {
   background-color: #FFD700;
+  color: black;
 }
