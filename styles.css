@@ -1,4 +1,11 @@
 @font-face {
+  font-family: 'DxGlitar';
+  src: url('./DxGlitar-free-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Monofonto';
   src: url('./monofonto rg.otf') format('opentype');
   font-weight: normal;
@@ -37,7 +44,7 @@ body {
   width: 100%;
   height: 100%;
   background: url('grain.png') repeat;
-  opacity: 0.1; /* Aseguramos que sea visible */
+  opacity: 0.1;
   pointer-events: none;
   z-index: -1;
 }
@@ -69,45 +76,17 @@ body {
 
 .clock-link {
   text-decoration: none;
-}
-
-.clock {
-  font-family: 'Monofonto', sans-serif;
-  font-size: 5em;
-  color: white;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-  z-index: 1;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
 }
 
-.clock:hover {
-  color: #FFD700;
-}
-
-.upload-container {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.file-upload {
-  display: none;
-}
-
-#upload-button {
-  background-color: transparent;
-  border: 2px solid #FFD700;
-  border-radius: 8px;
-  padding: 10px 20px;
-  cursor: pointer;
+.clock {
+  font-family: 'DxGlitar', sans-serif; /* Fuente personalizada */
+  font-size: 2.5em; /* Tamaño reducido */
   color: white;
-  font-family: 'Monofonto', sans-serif;
-  font-size: 1.2em;
-}
-
-#upload-button:hover {
-  background-color: #FFD700;
-  color: black;
-}
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  position: relative;
+  text-align: center;
