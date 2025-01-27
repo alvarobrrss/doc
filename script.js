@@ -29,5 +29,10 @@ function initBrokenClock() {
 
   const intervalId = setInterval(() => {
     if (!isPaused) {
-      clock.textContent = generateRandom
+      clock.textContent = generateRandomDate();
+    }
+  }, 1000);
+}
 
+initBrokenClock();
+setInterval(showNextImage, 3000);
