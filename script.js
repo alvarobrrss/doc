@@ -1,4 +1,5 @@
 const background = document.querySelector('.background');
+const grain = document.querySelector('.grain');
 const images = document.querySelectorAll(".slideshow img");
 let currentIndex = 0;
 
@@ -24,34 +25,9 @@ function generateRandomDate() {
 function initBrokenClock() {
   const clock = document.querySelector('.clock');
   let isPaused = false;
+  let fixedDate = "";
 
-  setInterval(() => {
+  const intervalId = setInterval(() => {
     if (!isPaused) {
-      clock.textContent = generateRandomDate();
-    }
-  }, 50);
+      clock.textContent = generateRandom
 
-  setInterval(() => {
-    isPaused = true;
-    setTimeout(() => {
-      isPaused = false;
-    }, 2000);
-  }, 5000);
-}
-
-function initMusic() {
-  const music = document.getElementById('background-music');
-  music.loop = true;
-  music.autoplay = true;
-  music.play().catch(() => {
-    const playButton = document.createElement('button');
-    playButton.textContent = "Reproducir música";
-    playButton.style.position = 'absolute';
-    playButton.style.zIndex = 10;
-    playButton.style.top = '20px';
-    playButton.style.right = '20px';
-    playButton.addEventListener('click', () => {
-      music.play();
-      playButton.remove();
-    });
-    document.body
