@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'Monofonto';
-  src: url('./monofonto rg.otf') format('opentype');
-  font-weight: normal;
+  font-family: 'HelveticaNeueBold';
+  src: url('./HelveticaNeueBold.otf') format('opentype');
+  font-weight: bold;
   font-style: normal;
 }
 
@@ -76,7 +76,7 @@ body {
 }
 
 .clock {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'HelveticaNeueBold', sans-serif;
   font-size: 5em;
   color: white;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
@@ -104,7 +104,7 @@ body {
   padding: 10px 20px;
   cursor: pointer;
   color: white;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'HelveticaNeueBold', sans-serif;
   letter-spacing: -0.5px;
   font-size: 1.2em;
   text-align: center;
