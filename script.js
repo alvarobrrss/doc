@@ -1,5 +1,4 @@
 const background = document.querySelector('.background');
-const grain = document.querySelector('.grain');
 const images = document.querySelectorAll(".slideshow img");
 let currentIndex = 0;
 
@@ -55,20 +54,4 @@ function initMusic() {
       music.play();
       playButton.remove();
     });
-    document.body.appendChild(playButton);
-  });
-}
-
-const fileInput = document.getElementById('file-upload');
-fileInput.addEventListener('change', (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    console.log('Archivo seleccionado:', file.name);
-  }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  setInterval(showNextImage, 3000);
-  initBrokenClock();
-  initMusic();
-});
+    document.body
