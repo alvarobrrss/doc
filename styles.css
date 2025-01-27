@@ -15,6 +15,8 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+  border: 2px solid #4827b8;
+  box-sizing: border-box;
 }
 
 .background {
@@ -73,6 +75,8 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 .clock {
@@ -80,12 +84,12 @@ body {
   font-size: 5em;
   color: white;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-  position: relative;
   text-align: center;
+  margin: 0 auto;
 }
 
 .clock:hover {
-  color: #FFD700;
+  color: #4827b8;
 }
 
 .upload-container {
@@ -101,14 +105,30 @@ body {
   background-color: transparent;
   border: 2px solid #FFD700;
   border-radius: 8px;
-  padding: 10px 20px;
+  padding: 8px 16px; /* Botón más pequeño */
   cursor: pointer;
   color: white;
   font-family: 'HelveticaNeueBold', sans-serif;
   letter-spacing: -0.5px;
-  font-size: 1.2em;
+  font-size: 1em;
   text-align: center;
   display: inline-block;
+}
+
+.upload-button:hover {
+  background-color: #4827b8;
+  border-color: #4827b8;
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .clock {
+    font-size: 3em;
+  }
+  .upload-button {
+    font-size: 0.9em;
+    padding: 6px 12px;
+  }
 }
 
 .upload-button:hover {
