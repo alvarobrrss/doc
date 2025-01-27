@@ -18,16 +18,15 @@ document.addEventListener('mousemove', (e) => {
 function generateRandomDate() {
   const day = Math.floor(Math.random() * 28 + 1).toString().padStart(2, "0");
   const month = Math.floor(Math.random() * 12 + 1).toString().padStart(2, "0");
-  const year = Math.floor(Math.random() * (2026 - 1970 + 1) + 1970); // Hasta 2026
+  const year = Math.floor(Math.random() * (2026 - 1970 + 1) + 1970);
   return `${day}/${month}/${year}`;
 }
 
 function initBrokenClock() {
   const clock = document.querySelector('.clock');
   let isPaused = false;
-  let fixedDate = "";
 
-  const intervalId = setInterval(() => {
+  setInterval(() => {
     if (!isPaused) {
       clock.textContent = generateRandomDate();
     }
@@ -35,9 +34,6 @@ function initBrokenClock() {
 
   setInterval(() => {
     isPaused = true;
-    fixedDate = generateRandomDate();
-    clock.textContent = fixedDate;
-
     setTimeout(() => {
       isPaused = false;
     }, 2000);
@@ -63,13 +59,7 @@ function initMusic() {
   });
 }
 
-const uploadButton = document.getElementById('upload-button');
 const fileInput = document.getElementById('file-upload');
-
-uploadButton.addEventListener('click', () => {
-  fileInput.click();
-});
-
 fileInput.addEventListener('change', (event) => {
   const file = event.target.files[0];
   if (file) {
@@ -82,5 +72,3 @@ document.addEventListener("DOMContentLoaded", () => {
   initBrokenClock();
   initMusic();
 });
-
-
