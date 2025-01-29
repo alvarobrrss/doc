@@ -5,9 +5,9 @@ const audio = document.getElementById("background-music");
 let currentIndex = 0;
 let isPaused = false;
 
-for (let i = 1; i <= 50; i++) {
+for (let i = 1; i <= 26; i++) {
   let img = document.createElement("img");
-  img.src = `imagenesdesenfocadas25/fotobkh (${i}).jpg`;
+  img.src = `imagenesbkh1/imagenesbkh1 (${i}).jpg`;
   img.alt = `Imagen ${i}`;
   if (i === 1) img.classList.add("active");
   slideshowContainer.appendChild(img);
