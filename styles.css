@@ -14,7 +14,6 @@ body {
   height: 100vh;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -27,9 +26,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('imagenesdesenfocadas80/imagen (1).jpg');
-  background-size: cover;
-  background-position: center;
+  background: url('imagenesdesenfocadas80/imagen (1).jpg') no-repeat center center/cover;
   transform: scale(1.1);
   z-index: -2;
 }
@@ -40,10 +37,19 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
-  mix-blend-mode: overlay;
+  background: url('grain.png');
+  opacity: 0.2;
+  animation: grainEffect 0.5s steps(5) infinite;
   pointer-events: none;
   z-index: -1;
+}
+
+@keyframes grainEffect {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-4px, 4px); }
+  50% { transform: translate(4px, -4px); }
+  75% { transform: translate(-4px, -4px); }
+  100% { transform: translate(4px, 4px); }
 }
 
 .slideshow {
@@ -64,7 +70,7 @@ body {
   object-fit: cover;
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
+  filter: sepia(50%) contrast(1.1) brightness(0.9) grayscale(20%);
 }
 
 .slideshow img.active {
@@ -77,15 +83,10 @@ body {
 
 .clock {
   font-family: 'Helvetica Neue', sans-serif;
-  font-size: 5em;
+  font-size: 3em;
   color: white;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-  z-index: 1;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  letter-spacing: -2px;
+  letter-spacing: -3px;
   transition: color 0.3s ease;
   cursor: pointer;
 }
@@ -96,6 +97,6 @@ body {
 
 @media (max-width: 768px) {
   .clock {
-    font-size: 4em;
+    font-size: 2.2em;
   }
 }
