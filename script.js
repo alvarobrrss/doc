@@ -2,14 +2,27 @@ const slideshowContainer = document.querySelector(".slideshow");
 const clock = document.querySelector(".clock");
 const audio = document.getElementById("background-music");
 
+let imagesArray = [];
 let currentIndex = 0;
 let isPaused = false;
 
 for (let i = 1; i <= 26; i++) {
   let img = document.createElement("img");
-  img.src = `imagenesbkh1/imagenesbkh1 (${i}).jpg`;
+  let imagePath = `imagenesbkh1/imagenesbkh1 (${i}).jpg`;
+  
+  img.src = imagePath;
   img.alt = `Imagen ${i}`;
+  
+  img.onerror = function() {
+    imagesArray = imagesArray.filter(image => image !== imagePath);
+    if (imagesArray.length > 0) {
+      this.src = imagesArray[Math.floor(Math.random() * imagesArray.length)];
+    }
+  };
+  
+  imagesArray.push(imagePath);
   if (i === 1) img.classList.add("active");
+  
   slideshowContainer.appendChild(img);
 }
 
@@ -17,7 +30,7 @@ const images = document.querySelectorAll(".slideshow img");
 
 function showNextImage() {
   images[currentIndex].classList.remove("active");
-  currentIndex = (currentIndex + 1) % images.length;
+  currentIndex = Math.floor(Math.random() * imagesArray.length);
   images[currentIndex].classList.add("active");
 }
 
