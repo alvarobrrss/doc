@@ -1,9 +1,10 @@
 const images = document.querySelectorAll(".slideshow img");
-const clock = document.querySelector('.clock');
+const clock = document.querySelector(".clock");
+const audio = document.getElementById("background-music");
 
 let currentIndex = 0;
 let isPaused = false;
-let rapidInterval, stopInterval;
+let interval;
 
 function showNextImage() {
   images[currentIndex].classList.remove("active");
@@ -18,27 +19,29 @@ function generateRandomDate() {
   return `${day}/${month}/${year}`;
 }
 
-function startClockEffect() {
-  let fastUpdate = () => {
+function startClockAnimation() {
+  clearInterval(interval);
+  let speed = 50; 
+
+  interval = setInterval(() => {
     if (!isPaused) {
       clock.textContent = generateRandomDate();
-      requestAnimationFrame(fastUpdate);
     }
-  };
-  
-  fastUpdate();
-}
+  }, speed);
 
-function stopClockEffect() {
-  stopInterval = setInterval(() => {
+  setInterval(() => {
     isPaused = true;
     setTimeout(() => {
-      isPaused = false;
-      startClockEffect();
-    }, 3000);
+      clock.textContent = generateRandomDate();
+      setTimeout(() => {
+        isPaused = false;
+      }, 500);
+    }, 500);
   }, 3000);
 }
 
-startClockEffect();
-stopClockEffect();
-setInterval(showNextImage, 3000);
+window.addEventListener("DOMContentLoaded", () => {
+  startClockAnimation();
+  setInterval(showNextImage, 3000);
+  audio.volume = 0.5;
+});
