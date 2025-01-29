@@ -1,23 +1,22 @@
 @font-face {
   font-family: 'Helvetica Neue';
   src: url('./HelveticaNeueBold.otf') format('opentype');
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
+  margin: 0;
   background-color: black;
   height: 100vh;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   border: 6px solid #4827b8;
+  box-sizing: border-box;
 }
 
 .background {
@@ -26,9 +25,12 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('imagenesdesenfocadas80/imagen (1).jpg') no-repeat center center/cover;
+  background-image: url('imagenesdesenfocadas80/imagen (1).jpg');
+  background-size: cover;
+  background-position: center;
   transform: scale(1.1);
   z-index: -2;
+  filter: blur(3px) saturate(1.5);
 }
 
 .grain {
@@ -37,19 +39,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('grain.png');
-  opacity: 0.2;
-  animation: grainEffect 0.5s steps(5) infinite;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+  mix-blend-mode: overlay;
   pointer-events: none;
   z-index: -1;
-}
-
-@keyframes grainEffect {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(-4px, 4px); }
-  50% { transform: translate(4px, -4px); }
-  75% { transform: translate(-4px, -4px); }
-  100% { transform: translate(4px, 4px); }
+  opacity: 0.15;
 }
 
 .slideshow {
@@ -70,7 +64,7 @@ body {
   object-fit: cover;
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  filter: sepia(50%) contrast(1.1) brightness(0.9) grayscale(20%);
+  filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
 }
 
 .slideshow img.active {
@@ -86,17 +80,51 @@ body {
   font-size: 3em;
   color: white;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-  letter-spacing: -3px;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: color 0.3s ease;
   cursor: pointer;
+  letter-spacing: 2px;
 }
 
 .clock:hover {
   color: #4827b8;
 }
 
+.upload-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.upload-button {
+  background-color: transparent;
+  border: 2px solid #4827b8;
+  border-radius: 8px;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 1em;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #4827b8;
+  color: white;
+  border-color: #4827b8;
+}
+
 @media (max-width: 768px) {
   .clock {
-    font-size: 2.2em;
+    font-size: 2em;
+    letter-spacing: 1px;
+  }
+
+  .upload-button {
+    font-size: 1em;
+    padding: 6px 15px;
   }
 }
