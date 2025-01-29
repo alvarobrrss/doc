@@ -20,6 +20,7 @@ body {
   height: 100%;
   display: flex;
   overflow: hidden;
+  z-index: -1;
 }
 
 .slideshow img {
@@ -44,29 +45,11 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: glitch 1s infinite;
+  z-index: 1;
 }
 
 .clock-link {
   text-decoration: none;
-}
-
-@keyframes glitch {
-  0% {
-    text-shadow: 1px 1px 0 red, -1px -1px 0 blue, 1px -1px 0 green, -1px 1px 0 yellow;
-  }
-  25% {
-    text-shadow: -1px 1px 0 red, 1px -1px 0 blue, -1px -1px 0 green, 1px 1px 0 yellow;
-  }
-  50% {
-    text-shadow: 1px 1px 0 red, -1px -1px 0 blue, 1px -1px 0 green, -1px 1px 0 yellow;
-  }
-  75% {
-    text-shadow: -1px 1px 0 red, 1px -1px 0 blue, -1px -1px 0 green, 1px 1px 0 yellow;
-  }
-  100% {
-    text-shadow: 1px 1px 0 red, -1px -1px 0 blue, 1px -1px 0 green, -1px 1px 0 yellow;
-  }
 }
 
 @media (max-width: 768px) {
