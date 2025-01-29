@@ -1,7 +1,9 @@
-const background = document.querySelector('.background');
-const grain = document.querySelector('.grain');
 const images = document.querySelectorAll(".slideshow img");
+const clock = document.querySelector(".clock");
+const audio = document.getElementById("background-music");
+
 let currentIndex = 0;
+let isPaused = false;
 
 function showNextImage() {
   images[currentIndex].classList.remove("active");
@@ -16,17 +18,24 @@ function generateRandomDate() {
   return `${day}/${month}/${year}`;
 }
 
-function initBrokenClock() {
-  const clock = document.querySelector('.clock');
-  let isPaused = false;
-  let fixedDate = "";
-
-  const intervalId = setInterval(() => {
+function animateClock() {
+  let speed = 50;
+  let interval = setInterval(() => {
     if (!isPaused) {
       clock.textContent = generateRandomDate();
     }
-  }, 400); // Aumento la velocidad a 400ms
+  }, speed);
+
+  setInterval(() => {
+    isPaused = true;
+    setTimeout(() => {
+      isPaused = false;
+    }, 1000);
+  }, 3000);
 }
 
-initBrokenClock();
-setInterval(showNextImage, 3000);
+window.addEventListener("DOMContentLoaded", () => {
+  animateClock();
+  setInterval(showNextImage, 3000);
+  audio.volume = 0.5;
+});
