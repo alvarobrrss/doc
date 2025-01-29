@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: black;
-  height: 100vh;
+  height: 100dvh; /* Usar 100dvh para evitar problemas con la barra de navegación */
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -18,11 +18,11 @@ body {
 }
 
 .border {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100dvh; /* Ajuste para que el borde siempre sea visible */
   border: 6px solid #4827b8;
   pointer-events: none;
   box-sizing: border-box;
@@ -32,8 +32,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100dvh;
   background-size: cover;
   background-position: center;
   z-index: -2;
@@ -43,8 +43,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100dvh;
   background: url('grain.png');
   opacity: 0.3;
   mix-blend-mode: overlay;
@@ -61,8 +61,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100dvh;
   z-index: -1;
 }
 
