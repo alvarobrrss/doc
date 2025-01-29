@@ -1,89 +1,30 @@
-@font-face {
-  font-family: 'Helvetica Neue';
-  src: url('./HelveticaNeueBold.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documental</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="vhs.ico" type="image/x-icon">
+</head>
+<body>
+  <audio id="background-music" src="musiquilla.mp3" autoplay loop></audio>
 
-body {
-  margin: 0;
-  background-color: black;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  border: 6px solid #4827b8;
-  box-sizing: border-box;
-}
+  <!-- Slideshow de imágenes -->
+  <div class="slideshow">
+    <img src="imagenesdesenfocadas80/imagen (1).jpg" alt="Imagen 1" class="active">
+    <img src="imagenesdesenfocadas80/imagen (2).jpg" alt="Imagen 2">
+    <img src="imagenesdesenfocadas80/imagen (3).jpg" alt="Imagen 3">
+    <img src="imagenesdesenfocadas80/imagen (4).jpg" alt="Imagen 4">
+    <img src="imagenesdesenfocadas80/imagen (5).jpg" alt="Imagen 5">
+  </div>
 
-.slideshow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
+  <!-- Reloj -->
+  <a href="https://www.youtube.com/watch?v=r5LPEGYdo0M" target="_blank" class="clock-link">
+    <div class="clock">01/01/1970</div>
+  </a>
 
-.slideshow img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
-}
-
-.slideshow img.active {
-  opacity: 1;
-}
-
-.clock-link {
-  text-decoration: none;
-}
-
-.clock {
-  font-family: 'Helvetica Neue', sans-serif;
-  font-size: 2.5em;
-  color: white;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-  z-index: 1;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  letter-spacing: 1px;
-  animation: clockEffect 0.2s infinite alternate;
-}
-
-.clock:hover {
-  color: #4827b8;
-}
-
-@keyframes clockEffect {
-  0% {
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-  }
-  50% {
-    color: #ff3333;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
-  }
-  100% {
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-  }
-}
-
-@media (max-width: 768px) {
-  .clock {
-    font-size: 2em;
-    letter-spacing: 0px;
-  }
-}
+  <!-- Incluir el archivo JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
