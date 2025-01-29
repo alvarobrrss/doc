@@ -25,8 +25,7 @@ function initBrokenClock() {
     if (!isPaused) {
       clock.textContent = generateRandomDate();
     }
-  }, 150);
+  }, 500); // Ajusta la velocidad del reloj aquí
 }
 
 initBrokenClock();
-
