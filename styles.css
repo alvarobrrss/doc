@@ -14,7 +14,6 @@ body {
   align-items: center;
   flex-direction: column;
   position: relative;
-  border: 6px solid #4827b8;
   box-sizing: border-box;
 }
 
@@ -26,6 +25,7 @@ body {
   height: 100%;
   border: 6px solid #4827b8;
   pointer-events: none;
+  box-sizing: border-box;
 }
 
 .background {
@@ -34,7 +34,6 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('imagenesdesenfocadas80/imagen (1).jpg');
   background-size: cover;
   background-position: center;
   z-index: -2;
