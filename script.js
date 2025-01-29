@@ -1,3 +1,5 @@
+const background = document.querySelector('.background');
+const grain = document.querySelector('.grain');
 const images = document.querySelectorAll(".slideshow img");
 let currentIndex = 0;
 
@@ -6,8 +8,6 @@ function showNextImage() {
   currentIndex = (currentIndex + 1) % images.length;
   images[currentIndex].classList.add("active");
 }
-
-setInterval(showNextImage, 3000);
 
 function generateRandomDate() {
   const day = Math.floor(Math.random() * 28 + 1).toString().padStart(2, "0");
@@ -25,7 +25,8 @@ function initBrokenClock() {
     if (!isPaused) {
       clock.textContent = generateRandomDate();
     }
-  }, 500); // Ajusta la velocidad del reloj aquí
+  }, 400); // Aumento la velocidad a 400ms
 }
 
 initBrokenClock();
+setInterval(showNextImage, 3000);
