@@ -1,9 +1,19 @@
-const images = document.querySelectorAll(".slideshow img");
+const slideshowContainer = document.querySelector(".slideshow");
 const clock = document.querySelector(".clock");
 const audio = document.getElementById("background-music");
 
 let currentIndex = 0;
 let isPaused = false;
+
+for (let i = 1; i <= 50; i++) {
+  let img = document.createElement("img");
+  img.src = `imagenesdesenfocadas25/fotobkh (${i}).jpg`;
+  img.alt = `Imagen ${i}`;
+  if (i === 1) img.classList.add("active");
+  slideshowContainer.appendChild(img);
+}
+
+const images = document.querySelectorAll(".slideshow img");
 
 function showNextImage() {
   images[currentIndex].classList.remove("active");
