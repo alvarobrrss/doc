@@ -1,63 +1,89 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="vhs.ico" type="image/x-icon">
-</head>
-<body>
-  <audio id="background-music" src="musiquilla.mp3" autoplay loop></audio>
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('./HelveticaNeueBold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-  <div class="background"></div>
-  <div class="grain"></div>
+body {
+  margin: 0;
+  background-color: black;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border: 6px solid #4827b8;
+  box-sizing: border-box;
+}
 
-  <div class="slideshow">
-    <img src="imagenesdesenfocadas80/imagen (1).jpg" alt="Imagen 1" class="active">
-    <img src="imagenesdesenfocadas80/imagen (2).jpg" alt="Imagen 2">
-    <img src="imagenesdesenfocadas80/imagen (3).jpg" alt="Imagen 3">
-    <img src="imagenesdesenfocadas80/imagen (4).jpg" alt="Imagen 4">
-    <img src="imagenesdesenfocadas80/imagen (5).jpg" alt="Imagen 5">
-    <img src="imagenesdesenfocadas80/imagen (6).jpg" alt="Imagen 6">
-    <img src="imagenesdesenfocadas80/imagen (7).jpg" alt="Imagen 7">
-    <img src="imagenesdesenfocadas80/imagen (8).jpg" alt="Imagen 8">
-    <img src="imagenesdesenfocadas80/imagen (9).jpg" alt="Imagen 9">
-    <img src="imagenesdesenfocadas80/imagen (10).jpg" alt="Imagen 10">
-    <img src="imagenesdesenfocadas80/imagen (11).jpg" alt="Imagen 11">
-    <img src="imagenesdesenfocadas80/imagen (12).jpg" alt="Imagen 12">
-    <img src="imagenesdesenfocadas80/imagen (13).jpg" alt="Imagen 13">
-    <img src="imagenesdesenfocadas80/imagen (14).jpg" alt="Imagen 14">
-    <img src="imagenesdesenfocadas80/imagen (15).jpg" alt="Imagen 15">
-    <img src="imagenesdesenfocadas80/imagen (16).jpg" alt="Imagen 16">
-    <img src="imagenesdesenfocadas80/imagen (17).jpg" alt="Imagen 17">
-    <img src="imagenesdesenfocadas80/imagen (18).jpg" alt="Imagen 18">
-    <img src="imagenesdesenfocadas80/imagen (19).jpg" alt="Imagen 19">
-    <img src="imagenesdesenfocadas80/imagen (20).jpg" alt="Imagen 20">
-    <img src="imagenesdesenfocadas80/imagen (21).jpg" alt="Imagen 21">
-    <img src="imagenesdesenfocadas80/imagen (22).jpg" alt="Imagen 22">
-    <img src="imagenesdesenfocadas80/imagen (23).jpg" alt="Imagen 23">
-    <img src="imagenesdesenfocadas80/imagen (24).jpg" alt="Imagen 24">
-    <img src="imagenesdesenfocadas80/imagen (25).jpg" alt="Imagen 25">
-    <img src="imagenesdesenfocadas80/imagen (26).jpg" alt="Imagen 26">
-    <img src="imagenesdesenfocadas80/imagen (27).jpg" alt="Imagen 27">
-    <img src="imagenesdesenfocadas80/imagen (28).jpg" alt="Imagen 28">
-    <img src="imagenesdesenfocadas80/imagen (29).jpg" alt="Imagen 29">
-    <img src="imagenesdesenfocadas80/imagen (30).jpg" alt="Imagen 30">
-    <img src="imagenesdesenfocadas80/imagen (31).jpg" alt="Imagen 31">
-    <img src="imagenesdesenfocadas80/imagen (32).jpg" alt="Imagen 32">
-    <img src="imagenesdesenfocadas80/imagen (33).jpg" alt="Imagen 33">
-    <img src="imagenesdesenfocadas80/imagen (34).jpg" alt="Imagen 34">
-    <img src="imagenesdesenfocadas80/imagen (35).jpg" alt="Imagen 35">
-    <img src="imagenesdesenfocadas80/imagen (36).jpg" alt="Imagen 36">
-    <img src="imagenesdesenfocadas80/imagen (37).jpg" alt="Imagen 37">
-    <img src="imagenesdesenfocadas80/imagen (38).jpg" alt="Imagen 38">
-  </div>
+.slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 
-  <a href="https://www.youtube.com/watch?v=r5LPEGYdo0M" target="_blank" class="clock-link">
-    <div class="clock">01/01/1970</div>
-  </a>
+.slideshow img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.slideshow img.active {
+  opacity: 1;
+}
+
+.clock-link {
+  text-decoration: none;
+}
+
+.clock {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 2.5em;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  letter-spacing: 1px;
+  animation: clockEffect 0.2s infinite alternate;
+}
+
+.clock:hover {
+  color: #4827b8;
+}
+
+@keyframes clockEffect {
+  0% {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  }
+  50% {
+    color: #ff3333;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+  }
+  100% {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media (max-width: 768px) {
+  .clock {
+    font-size: 2em;
+    letter-spacing: 0px;
+  }
+}
