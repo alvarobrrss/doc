@@ -21,7 +21,7 @@ function generateRandomDate() {
 
 function startClockAnimation() {
   clearInterval(interval);
-  let speed = 50; 
+  let speed = 100; 
 
   interval = setInterval(() => {
     if (!isPaused) {
