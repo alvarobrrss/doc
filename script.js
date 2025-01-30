@@ -7,11 +7,8 @@ let currentIndex = 0;
 
 for (let i = 1; i <= 44; i++) {
   let img = document.createElement("img");
-  let imagePath = `bkh_50/imagenbkh (${i}).jpg`;
-  
-  img.src = imagePath;
+  img.src = `bkh_50/imagenbkh (${i}).jpg`;
   img.alt = `Imagen ${i}`;
-  
   imagesArray.push(img);
   slideshowContainer.appendChild(img);
 }
