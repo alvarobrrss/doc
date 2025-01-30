@@ -4,34 +4,24 @@ const audio = document.getElementById("background-music");
 
 let imagesArray = [];
 let currentIndex = 0;
-let isPaused = false;
 
-for (let i = 1; i <= 26; i++) {
+for (let i = 1; i <= 44; i++) {
   let img = document.createElement("img");
   let imagePath = `bkh_50/imagenbkh (${i}).jpg`;
   
   img.src = imagePath;
   img.alt = `Imagen ${i}`;
   
-  img.onerror = function() {
-    imagesArray = imagesArray.filter(image => image !== imagePath);
-    if (imagesArray.length > 0) {
-      this.src = imagesArray[Math.floor(Math.random() * imagesArray.length)];
-    }
-  };
-  
-  imagesArray.push(imagePath);
-  if (i === 1) img.classList.add("active");
-  
+  imagesArray.push(img);
   slideshowContainer.appendChild(img);
 }
 
-const images = document.querySelectorAll(".slideshow img");
+imagesArray[0].classList.add("active");
 
 function showNextImage() {
-  images[currentIndex].classList.remove("active");
-  currentIndex = Math.floor(Math.random() * imagesArray.length);
-  images[currentIndex].classList.add("active");
+  imagesArray[currentIndex].classList.remove("active");
+  currentIndex = (currentIndex + 1) % imagesArray.length;
+  imagesArray[currentIndex].classList.add("active");
 }
 
 function generateRandomDate() {
@@ -44,15 +34,15 @@ function generateRandomDate() {
 function animateClock() {
   let speed = 50;
   let interval = setInterval(() => {
-    if (!isPaused) {
-      clock.textContent = generateRandomDate();
-    }
+    clock.textContent = generateRandomDate();
   }, speed);
 
   setInterval(() => {
-    isPaused = true;
+    clearInterval(interval);
     setTimeout(() => {
-      isPaused = false;
+      interval = setInterval(() => {
+        clock.textContent = generateRandomDate();
+      }, speed);
     }, 1000);
   }, 3000);
 }
