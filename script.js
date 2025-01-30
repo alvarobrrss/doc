@@ -8,7 +8,7 @@ let isPaused = false;
 
 for (let i = 1; i <= 26; i++) {
   let img = document.createElement("img");
-  let imagePath = `imagenesbkh1/imagenesbkh1 (${i}).jpg`;
+  let imagePath = `bkh_50/imagenbkh (${i}).jpg`;
   
   img.src = imagePath;
   img.alt = `Imagen ${i}`;
