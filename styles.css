@@ -23,7 +23,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100dvh; 
-  border: 6px solid #4827b8;
+  border: 6px solid red;
   pointer-events: none;
   box-sizing: border-box;
 }
@@ -46,40 +46,15 @@ body {
   width: 100vw;
   height: 100dvh;
   background: url('grain.png');
-  opacity: 0.3;
+  opacity: 0.6;
   mix-blend-mode: overlay;
   z-index: -1;
-  animation: grainEffect 1s steps(5) infinite;
+  animation: grainEffect 0.1s steps(5) infinite;
 }
 
 @keyframes grainEffect {
   0% { transform: translate(0, 0); }
   100% { transform: translate(-5px, 5px); }
-}
-
-.slideshow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100dvh;
-  z-index: -1;
-}
-
-.slideshow img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
-}
-
-.slideshow img.active {
-  opacity: 1;
 }
 
 .clock-link {
@@ -100,13 +75,5 @@ body {
 }
 
 .clock:hover {
-  color: #4827b8;
+  color: red;
 }
-
-@media (max-width: 768px) {
-  .clock {
-    font-size: 1.5em;
-    letter-spacing: -2px;
-  }
-}
-
