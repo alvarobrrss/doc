@@ -77,9 +77,3 @@ body {
 .clock:hover {
   color: red;
 }
-
-.underlined-year {
-  background: yellow;
-  padding: 0 5px;
-  font-weight: bold;
-}
