@@ -23,7 +23,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100dvh; 
-  border: 6px solid #4827b8;
+  border: 6px solid #FF0000;
   pointer-events: none;
   box-sizing: border-box;
 }
@@ -100,7 +100,7 @@ body {
 }
 
 .clock:hover {
-  color: #4827b8;
+  color: #FF0000;
 }
 
 @media (max-width: 768px) {
