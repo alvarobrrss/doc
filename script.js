@@ -9,20 +9,17 @@ let isPaused = false;
 for (let i = 1; i <= 26; i++) {
   let img = document.createElement("img");
   let imagePath = `bkh_50/imagenbkh (${i}).jpg`;
-  
+
   img.src = imagePath;
   img.alt = `Imagen ${i}`;
-  
+
   img.onerror = function() {
     imagesArray = imagesArray.filter(image => image !== imagePath);
-    if (imagesArray.length > 0) {
-      this.src = imagesArray[Math.floor(Math.random() * imagesArray.length)];
-    }
   };
-  
+
   imagesArray.push(imagePath);
   if (i === 1) img.classList.add("active");
-  
+
   slideshowContainer.appendChild(img);
 }
 
@@ -61,4 +58,47 @@ window.addEventListener("DOMContentLoaded", () => {
   animateClock();
   setInterval(showNextImage, 3000);
   audio.volume = 0.5;
+});
+
+// Subida de archivos a Firebase Storage
+document.getElementById("upload-form").addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const user = firebase.auth().currentUser;
+  if (!user) {
+    alert("Error: No se pudo autenticar.");
+    return;
+  }
+
+  const nombre = document.getElementById("nombre").value;
+  const correo = document.getElementById("correo").value || "No proporcionado";
+  const telefono = document.getElementById("telefono").value || "No proporcionado";
+  const file = document.getElementById("fileInput").files[0];
+
+  if (!file) {
+    alert("Por favor, selecciona un archivo.");
+    return;
+  }
+
+  const storageRef = firebase.storage().ref(`uploads/${Date.now()}_${file.name}`);
+  const uploadTask = storageRef.put(file);
+
+  document.getElementById("upload-status").textContent = "Subiendo archivo...";
+
+  uploadTask.on("state_changed",
+    snapshot => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      document.getElementById("upload-status").textContent = `Subiendo: ${progress.toFixed(2)}%`;
+    },
+    error => {
+      alert("Error al subir archivo: " + error.message);
+    },
+    async () => {
+      const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
+      document.getElementById("upload-status").textContent = "Archivo subido correctamente.";
+
+      console.log("Archivo subido:", downloadURL);
+      console.log("Subido por:", nombre, correo, telefono);
+    }
+  );
 });
