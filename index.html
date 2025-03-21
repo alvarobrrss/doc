@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subida de Archivos</title>
+  <title></title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="vhs.ico">
 
@@ -14,24 +14,6 @@
     gtag('js', new Date());
 
     gtag('config', 'G-WJSFRMBW0E');
-  </script>
-
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js"></script>
-
-  <script>
-    const firebaseConfig = {
-      apiKey: "TU_API_KEY",
-      authDomain: "TU_AUTH_DOMAIN",
-      projectId: "TU_PROJECT_ID",
-      storageBucket: "TU_STORAGE_BUCKET",
-      messagingSenderId: "TU_MESSAGING_SENDER_ID",
-      appId: "TU_APP_ID"
-    };
-
-    firebase.initializeApp(firebaseConfig);
   </script>
 </head>
 <body>
@@ -46,23 +28,6 @@
   <a href="https://www.youtube.com/watch?v=r5LPEGYdo0M" target="_blank" class="clock-link">
     <div class="clock">01/01/1970</div>
   </a>
-
-  <!-- Formulario de subida -->
-  <div class="upload-container">
-    <h2>Sube tus archivos</h2>
-    <form id="upload-form">
-      <input type="text" id="name" placeholder="Nombre y Apellidos" required>
-      <input type="email" id="email" placeholder="Correo electrónico (opcional)">
-      <input type="tel" id="phone" placeholder="Número de teléfono (opcional)">
-      <input type="file" id="fileInput" required>
-      <label>
-        <input type="checkbox" id="terms" required>
-        Acepto que mis archivos pueden ser utilizados en el documental, confirmo que tengo los derechos para compartirlos y autorizo su posible uso en el documental.
-      </label>
-      <button type="submit">Subir</button>
-    </form>
-    <p id="upload-status"></p>
-  </div>
 
   <script src="script.js"></script>
 </body>
