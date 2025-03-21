@@ -7,6 +7,15 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="vhs.ico">
 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJSFRMBW0E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WJSFRMBW0E');
+  </script>
+
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
@@ -15,18 +24,14 @@
   <script>
     const firebaseConfig = {
       apiKey: "TU_API_KEY",
-      authDomain: "TU_PROYECTO.firebaseapp.com",
-      projectId: "TU_PROYECTO",
-      storageBucket: "TU_PROYECTO.appspot.com",
-      messagingSenderId: "TU_SENDER_ID",
+      authDomain: "TU_AUTH_DOMAIN",
+      projectId: "TU_PROJECT_ID",
+      storageBucket: "TU_STORAGE_BUCKET",
+      messagingSenderId: "TU_MESSAGING_SENDER_ID",
       appId: "TU_APP_ID"
     };
 
     firebase.initializeApp(firebaseConfig);
-
-    firebase.auth().signInAnonymously()
-      .then(() => console.log("Usuario anónimo autenticado"))
-      .catch(error => console.error("Error en autenticación anónima:", error));
   </script>
 </head>
 <body>
@@ -35,25 +40,29 @@
   <div class="border"></div>
   <div class="background"></div>
   <div class="grain"></div>
+
   <div class="slideshow"></div>
 
   <a href="https://www.youtube.com/watch?v=r5LPEGYdo0M" target="_blank" class="clock-link">
     <div class="clock">01/01/1970</div>
   </a>
 
-  <!-- Formulario de Subida -->
-  <form id="upload-form">
-    <input type="text" id="nombre" placeholder="Nombre y Apellidos" required>
-    <input type="email" id="correo" placeholder="Correo (opcional)">
-    <input type="tel" id="telefono" placeholder="Teléfono (opcional)">
-
-    <p>Al subir archivos, confirmo que tengo los derechos para compartirlos y autorizo su posible uso en el documental.</p>
-
-    <input type="file" id="fileInput" accept="image/*,video/*" required>
-    <button type="submit">Subir Archivo</button>
-  </form>
-
-  <p id="upload-status"></p>
+  <!-- Formulario de subida -->
+  <div class="upload-container">
+    <h2>Sube tus archivos</h2>
+    <form id="upload-form">
+      <input type="text" id="name" placeholder="Nombre y Apellidos" required>
+      <input type="email" id="email" placeholder="Correo electrónico (opcional)">
+      <input type="tel" id="phone" placeholder="Número de teléfono (opcional)">
+      <input type="file" id="fileInput" required>
+      <label>
+        <input type="checkbox" id="terms" required>
+        Acepto que mis archivos pueden ser utilizados en el documental, confirmo que tengo los derechos para compartirlos y autorizo su posible uso en el documental.
+      </label>
+      <button type="submit">Subir</button>
+    </form>
+    <p id="upload-status"></p>
+  </div>
 
   <script src="script.js"></script>
 </body>
