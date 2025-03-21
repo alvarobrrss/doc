@@ -2,42 +2,38 @@ const slideshowContainer = document.querySelector(".slideshow");
 const clock = document.querySelector(".clock");
 const audio = document.getElementById("background-music");
 
-// Autenticación anónima
-firebase.auth().signInAnonymously()
-  .then(() => console.log("Usuario anónimo autenticado"))
-  .catch(error => console.error("Error en autenticación:", error));
+let imagesArray = [];
+let currentIndex = 0;
+let isPaused = false;
 
-document.getElementById("upload-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
+for (let i = 1; i <= 26; i++) {
+  let img = document.createElement("img");
+  let imagePath = `bkh_50/imagenbkh (${i}).jpg`;
+  
+  img.src = imagePath;
+  img.alt = `Imagen ${i}`;
+  
+  img.onerror = function() {
+    imagesArray = imagesArray.filter(image => image !== imagePath);
+    if (imagesArray.length > 0) {
+      this.src = imagesArray[Math.floor(Math.random() * imagesArray.length)];
+    }
+  };
+  
+  imagesArray.push(imagePath);
+  if (i === 1) img.classList.add("active");
+  
+  slideshowContainer.appendChild(img);
+}
 
-  const file = document.getElementById("fileInput").files[0];
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const termsAccepted = document.getElementById("terms").checked;
-  const uploadStatus = document.getElementById("upload-status");
+const images = document.querySelectorAll(".slideshow img");
 
-  if (!file || !name || !termsAccepted) {
-    uploadStatus.textContent = "Debes completar los campos obligatorios.";
-    return;
-  }
+function showNextImage() {
+  images[currentIndex].classList.remove("active");
+  currentIndex = Math.floor(Math.random() * imagesArray.length);
+  images[currentIndex].classList.add("active");
+}
 
-  const storageRef = firebase.storage().ref();
-  const fileRef = storageRef.child(`uploads/${file.name}`);
-
-  try {
-    await fileRef.put(file);
-    uploadStatus.textContent = "Archivo subido correctamente.";
-
-    console.log("Datos del usuario:", { name, email, phone, file: file.name });
-
-  } catch (error) {
-    console.error("Error al subir:", error);
-    uploadStatus.textContent = "Error al subir el archivo.";
-  }
-});
-
-// Reloj aleatorio
 function generateRandomDate() {
   const day = Math.floor(Math.random() * 28 + 1).toString().padStart(2, "0");
   const month = Math.floor(Math.random() * 12 + 1).toString().padStart(2, "0");
@@ -48,15 +44,21 @@ function generateRandomDate() {
 function animateClock() {
   let speed = 50;
   let interval = setInterval(() => {
-    clock.textContent = generateRandomDate();
+    if (!isPaused) {
+      clock.textContent = generateRandomDate();
+    }
   }, speed);
 
   setInterval(() => {
-    setTimeout(() => {}, 1000);
+    isPaused = true;
+    setTimeout(() => {
+      isPaused = false;
+    }, 1000);
   }, 3000);
 }
 
 window.addEventListener("DOMContentLoaded", () => {
   animateClock();
+  setInterval(showNextImage, 3000);
   audio.volume = 0.5;
 });
