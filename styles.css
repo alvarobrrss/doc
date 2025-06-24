@@ -63,23 +63,11 @@ body {
   left: 0;
   width: 100vw;
   height: 100dvh;
+  background-image: url('bkh_50/vhsv1.JPG');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   z-index: -1;
-}
-
-.slideshow img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  filter: sepia(60%) contrast(1.1) brightness(0.9) grayscale(20%);
-}
-
-.slideshow img.active {
-  opacity: 1;
 }
 
 .clock-link {
