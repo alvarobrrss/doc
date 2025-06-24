@@ -78,13 +78,14 @@ body {
 
 .clock {
   font-family: 'Helvetica Neue', sans-serif;
-  font-size: 2em;
+  font-size: 1.8em; /* 10% smaller than original 2em */
   letter-spacing: -1px;
   color: white;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
   transition: color 0.3s ease;
   cursor: pointer;
   text-align: center;
+  margin-top: 1cm; /* shifted 1cm down */
 }
 
 .clock:hover {
@@ -93,7 +94,8 @@ body {
 
 @media (max-width: 768px) {
   .clock {
-    font-size: 1.5em;
+    font-size: 1.35em; /* 10% smaller than 1.5em */
     letter-spacing: -2px;
+    margin-top: 1cm;
   }
 }
