@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: black;
-  height: 100dvh; 
+  height: 100dvh;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -22,21 +22,22 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100dvh; 
+  height: 100dvh;
   border: 6px solid #FF0000;
   pointer-events: none;
   box-sizing: border-box;
+  z-index: 1;
 }
 
-.background {
+.background-video {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100dvh;
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
   z-index: -2;
+  pointer-events: none;
 }
 
 .grain {
@@ -55,47 +56,4 @@ body {
 @keyframes grainEffect {
   0% { transform: translate(0, 0); }
   100% { transform: translate(-5px, 5px); }
-}
-
-.slideshow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100dvh;
-  background-image: url('bkh_50/vhsv1.JPG');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1;
-}
-
-.clock-link {
-  text-decoration: none;
-  position: relative;
-  z-index: 1;
-}
-
-.clock {
-  font-family: 'Helvetica Neue', sans-serif;
-  font-size: 1.8em; /* 10% smaller than original 2em */
-  letter-spacing: -1px;
-  color: white;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-  transition: color 0.3s ease;
-  cursor: pointer;
-  text-align: center;
-  margin-top: 1cm; /* shifted 1cm down */
-}
-
-.clock:hover {
-  color: #FF0000;
-}
-
-@media (max-width: 768px) {
-  .clock {
-    font-size: 1.35em; /* 10% smaller than 1.5em */
-    letter-spacing: -2px;
-    margin-top: 1cm;
-  }
 }
