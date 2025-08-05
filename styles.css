@@ -17,18 +17,6 @@ body {
   box-sizing: border-box;
 }
 
-.border {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100dvh;
-  border: 6px solid #FF0000;
-  pointer-events: none;
-  box-sizing: border-box;
-  z-index: 1;
-}
-
 .background-video {
   position: fixed;
   top: 0;
@@ -38,6 +26,13 @@ body {
   object-fit: cover;
   z-index: -2;
   pointer-events: none;
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .background-video {
+    object-fit: contain;
+    background-color: black;
+  }
 }
 
 .grain {
