@@ -7,81 +7,48 @@ body {
   margin: 0;
   padding: 0;
   background-color: black;
-  min-height: 100dvh;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Helvetica Neue', sans-serif;
 }
 
-.video-wrapper {
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+
+.video-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  max-width: 100%;
-  padding: 0;
-  box-sizing: border-box;
+  width: 100%;
+  max-height: 70vh;
 }
 
-/* Default: video stretches full width */
 .background-video {
   width: 100%;
   height: auto;
-  max-height: 100dvh;
+  max-height: 70vh;
   object-fit: contain;
   background-color: black;
 }
 
-/* Center video vertically on mobile */
-@media (max-aspect-ratio: 9/16) {
-  body {
-    justify-content: center;
-  }
-
-  .video-wrapper {
-    height: 100dvh;
-  }
-
-  .background-video {
-    max-height: 70vh;
-  }
-
-  .nav-buttons {
-    margin-top: 20px;
-  }
-}
-
-.grain {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100dvh;
-  background: url('grain.png');
-  opacity: 0.3;
-  mix-blend-mode: overlay;
-  z-index: 1;
-  animation: grainEffect 1s steps(5) infinite;
-  pointer-events: none;
-}
-
-@keyframes grainEffect {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-5px, 5px); }
-}
-
+/* Botones líquidos */
 .nav-buttons {
-  margin: 20px 0 40px 0;
+  margin-top: 20px;
   display: flex;
   gap: 20px;
   justify-content: center;
-  z-index: 2;
 }
 
 .nav-button {
-  font-family: 'Helvetica Neue', sans-serif;
   font-size: 0.9em;
   padding: 10px 20px;
   border-radius: 999px;
@@ -100,3 +67,29 @@ body {
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
 }
 
+/* Efecto grano */
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('grain.png');
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  z-index: 1;
+  animation: grainEffect 1s steps(5) infinite;
+  pointer-events: none;
+}
+
+@keyframes grainEffect {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-5px, 5px); }
+}
+
+/* Ajustes móviles si hace falta */
+@media (max-width: 768px) {
+  .background-video {
+    max-height: 60vh;
+  }
+}
