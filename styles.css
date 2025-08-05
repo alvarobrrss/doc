@@ -23,16 +23,11 @@ body {
   left: 0;
   width: 100vw;
   height: 100dvh;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  background-color: black;
   z-index: -2;
   pointer-events: none;
-}
-
-@media (max-width: 768px) and (orientation: landscape) {
-  .background-video {
-    object-fit: contain;
-    background-color: black;
-  }
 }
 
 .grain {
@@ -52,3 +47,4 @@ body {
   0% { transform: translate(0, 0); }
   100% { transform: translate(-5px, 5px); }
 }
+
