@@ -15,21 +15,42 @@ body {
   box-sizing: border-box;
 }
 
-.video-container {
-  width: 100vw;
-  max-width: 100%;
-  overflow: hidden;
+.video-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  max-width: 100%;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Default: video stretches full width */
 .background-video {
   width: 100%;
   height: auto;
   max-height: 100dvh;
   object-fit: contain;
   background-color: black;
+}
+
+/* Center video vertically on mobile */
+@media (max-aspect-ratio: 9/16) {
+  body {
+    justify-content: center;
+  }
+
+  .video-wrapper {
+    height: 100dvh;
+  }
+
+  .background-video {
+    max-height: 70vh;
+  }
+
+  .nav-buttons {
+    margin-top: 20px;
+  }
 }
 
 .grain {
