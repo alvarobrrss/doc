@@ -39,41 +39,29 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 }
 
 .countdown-item .number {
-  font-size: clamp(3em, 9vw, 8em);
   color: white;
   letter-spacing: 0.05em;
   line-height: 1;
   font-family: '29LT Makina', monospace;
-  position: relative;
   display: block;
 }
 
-/* Jerarquía visual */
 #item-days .number    { font-size: clamp(3.5em, 11vw, 10em); }
 #item-hours .number   { font-size: clamp(3em,   9vw,  8em);  }
 #item-minutes .number { font-size: clamp(2.5em, 7vw,  6.5em); }
 #item-seconds .number { font-size: clamp(2.5em, 7vw,  6.5em); }
 
 .countdown-item .label {
-  font-size: clamp(0.45em, 1.2vw, 0.8em);
+  font-size: clamp(0.7em, 1.5vw, 1em);
   color: white;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   font-family: '29LT Makina', monospace;
   text-transform: lowercase;
-}
-
-/* Animación fade+slide */
-.number.animate {
-  animation: slideUp 0.3s ease forwards;
-}
-
-@keyframes slideUp {
-  0%   { opacity: 0; transform: translateY(8px); }
-  100% { opacity: 1; transform: translateY(0); }
+  margin-top: 2px;
 }
 
 .nav-buttons {
@@ -123,7 +111,7 @@ body {
 
 @media (max-width: 600px) {
   .countdown {
-    gap: 20px;
+    gap: 16px;
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -134,6 +122,6 @@ body {
   #item-seconds .number { font-size: clamp(1.8em, 10vw, 3em); }
 
   .countdown-item .label {
-    font-size: clamp(0.5em, 3vw, 0.7em);
+    font-size: clamp(0.55em, 3vw, 0.8em);
   }
 }
