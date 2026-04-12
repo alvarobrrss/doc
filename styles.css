@@ -25,12 +25,12 @@ body {
   width: 100vw;
   position: relative;
   z-index: 10;
-  gap: 60px;
+  gap: 50px;
 }
 
 .countdown {
   display: flex;
-  gap: 60px;
+  gap: 70px;
   justify-content: center;
   align-items: flex-start;
 }
@@ -39,11 +39,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
 .countdown-item .number {
-  font-size: 5em;
+  font-size: clamp(3.5em, 10vw, 9em);
   color: white;
   letter-spacing: 0.05em;
   line-height: 1;
@@ -51,10 +51,11 @@ body {
 }
 
 .countdown-item .label {
-  font-size: 0.7em;
+  font-size: clamp(0.5em, 1.5vw, 0.85em);
   color: white;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   font-family: '29LT Makina', monospace;
+  text-transform: lowercase;
 }
 
 .nav-buttons {
@@ -64,7 +65,7 @@ body {
 }
 
 .nav-button {
-  font-family: '29LT Makina', monospace;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 0.9em;
   padding: 10px 20px;
   border-radius: 999px;
@@ -106,7 +107,12 @@ body {
   .countdown {
     gap: 30px;
   }
+
   .countdown-item .number {
-    font-size: 3em;
+    font-size: clamp(2.5em, 12vw, 4em);
+  }
+
+  .countdown-item .label {
+    font-size: clamp(0.45em, 2.5vw, 0.7em);
   }
 }
