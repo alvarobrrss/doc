@@ -1,9 +1,14 @@
 function animateValue(el, newValue) {
   if (el.textContent === newValue) return;
-  el.classList.remove('animate');
-  void el.offsetWidth;
-  el.textContent = newValue;
-  el.classList.add('animate');
+  el.style.transition = 'none';
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(8px)';
+  setTimeout(() => {
+    el.textContent = newValue;
+    el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  }, 50);
 }
 
 function updateCountdown() {
