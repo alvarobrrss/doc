@@ -82,10 +82,9 @@ html, body {
 .nav-buttons {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 0;
+  gap: 10px;
 }
 
 .nav-button {
@@ -111,10 +110,10 @@ html, body {
 
 .disclaimer {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 0.7em;
+  font-size: 0.72em;
   color: #f5c400;
   text-align: center;
-  margin-top: 10px;
+  margin: 0;
 }
 
 .bottom-image {
@@ -123,15 +122,12 @@ html, body {
   left: 50%;
   transform: translateX(-50%);
   width: clamp(180px, 30vw, 360px);
-  height: clamp(60px, 10vw, 120px);
-  background-image: url('aunquedalomejor.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 11;
+  height: auto;
+  z-index: 20;
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;
+  -webkit-user-drag: none;
 }
 
 .grain {
@@ -176,8 +172,7 @@ html, body {
   }
 
   .bottom-image {
-    width: clamp(140px, 55vw, 260px);
-    height: clamp(50px, 18vw, 90px);
+    width: clamp(140px, 55vw, 240px);
     bottom: 14px;
   }
 
@@ -196,7 +191,6 @@ html, body {
   }
 
   .bottom-image {
-    width: clamp(120px, 60vw, 200px);
-    height: clamp(40px, 16vw, 70px);
+    width: clamp(120px, 60vw, 180px);
   }
 }
