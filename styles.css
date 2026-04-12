@@ -13,7 +13,7 @@ body {
   background-color: black;
   height: 100vh;
   overflow: hidden;
-  font-family: '29LT Makina', sans-serif;
+  font-family: '29LT Makina', monospace;
 }
 
 .main-wrapper {
@@ -39,23 +39,22 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.countdown-item span:first-child {
+.countdown-item .number {
   font-size: 5em;
-  color: white !important;
+  color: white;
   letter-spacing: 0.05em;
   line-height: 1;
-  display: block;
+  font-family: '29LT Makina', monospace;
 }
 
-.label {
-  font-size: 0.75em;
-  color: white !important;
+.countdown-item .label {
+  font-size: 0.7em;
+  color: white;
   letter-spacing: 0.15em;
-  text-transform: lowercase;
-  display: block;
+  font-family: '29LT Makina', monospace;
 }
 
 .nav-buttons {
@@ -65,7 +64,7 @@ body {
 }
 
 .nav-button {
-  font-family: '29LT Makina', sans-serif;
+  font-family: '29LT Makina', monospace;
   font-size: 0.9em;
   padding: 10px 20px;
   border-radius: 999px;
@@ -107,7 +106,7 @@ body {
   .countdown {
     gap: 30px;
   }
-  .countdown-item span:first-child {
+  .countdown-item .number {
     font-size: 3em;
   }
 }
