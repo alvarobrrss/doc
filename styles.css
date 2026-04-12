@@ -12,8 +12,20 @@
 body {
   background-color: black;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   font-family: '29LT Makina', monospace;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  object-fit: cover;
+  z-index: 0;
 }
 
 .main-wrapper {
@@ -22,17 +34,20 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  height: 100dvh;
   width: 100vw;
   position: relative;
   z-index: 10;
   gap: 40px;
+  padding: 20px;
 }
 
 .countdown {
   display: flex;
-  gap: clamp(20px, 5vw, 60px);
+  gap: clamp(16px, 5vw, 60px);
   justify-content: center;
   align-items: flex-start;
+  width: 100%;
 }
 
 .countdown-item {
@@ -43,7 +58,7 @@ body {
 }
 
 .countdown-item .number {
-  font-size: clamp(3em, 9vw, 8em);
+  font-size: clamp(2.5em, 8vw, 8em);
   color: white;
   letter-spacing: 0.05em;
   line-height: 1;
@@ -53,7 +68,7 @@ body {
 }
 
 .countdown-item .label {
-  font-size: clamp(1em, 2.2vw, 1.5em);
+  font-size: clamp(0.8em, 2vw, 1.5em);
   color: white;
   letter-spacing: 0.1em;
   font-family: '29LT Makina', monospace;
@@ -63,7 +78,7 @@ body {
 
 .nav-buttons {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -110,15 +125,29 @@ body {
 
 @media (max-width: 600px) {
   .countdown {
-    gap: 16px;
-    flex-wrap: wrap;
+    gap: clamp(10px, 4vw, 24px);
   }
 
   .countdown-item .number {
-    font-size: clamp(2.2em, 12vw, 3.5em);
+    font-size: clamp(2em, 10vw, 3.5em);
   }
 
   .countdown-item .label {
-    font-size: clamp(0.8em, 4vw, 1.1em);
+    font-size: clamp(0.6em, 3.5vw, 1em);
+  }
+
+  .nav-button {
+    font-size: 0.8em;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .countdown-item .number {
+    font-size: clamp(1.6em, 9vw, 2.5em);
+  }
+
+  .countdown-item .label {
+    font-size: clamp(0.5em, 3vw, 0.8em);
   }
 }
