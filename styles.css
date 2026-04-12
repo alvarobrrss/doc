@@ -42,6 +42,7 @@ html, body {
   z-index: 10;
   gap: 40px;
   padding: 20px;
+  padding-bottom: 120px;
 }
 
 .countdown {
@@ -116,6 +117,23 @@ html, body {
   margin-top: 10px;
 }
 
+.bottom-image {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(180px, 30vw, 360px);
+  height: clamp(60px, 10vw, 120px);
+  background-image: url('aunquedalomejor.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 11;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 .grain {
   position: fixed;
   top: 0;
@@ -156,6 +174,16 @@ html, body {
   .disclaimer {
     font-size: 0.65em;
   }
+
+  .bottom-image {
+    width: clamp(140px, 55vw, 260px);
+    height: clamp(50px, 18vw, 90px);
+    bottom: 14px;
+  }
+
+  .main-wrapper {
+    padding-bottom: 100px;
+  }
 }
 
 @media (max-width: 380px) {
@@ -165,5 +193,10 @@ html, body {
 
   .countdown-item .label {
     font-size: clamp(0.5em, 3vw, 0.8em);
+  }
+
+  .bottom-image {
+    width: clamp(120px, 60vw, 200px);
+    height: clamp(40px, 16vw, 70px);
   }
 }
