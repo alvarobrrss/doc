@@ -3,6 +3,10 @@
   src: url('./29lt-makina-regular.otf') format('opentype');
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -19,9 +23,8 @@ body {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  box-sizing: border-box;
   position: relative;
-  z-index: 2;
+  z-index: 10;
   gap: 60px;
 }
 
@@ -41,16 +44,18 @@ body {
 
 .countdown-item span:first-child {
   font-size: 5em;
-  color: white;
+  color: white !important;
   letter-spacing: 0.05em;
   line-height: 1;
+  display: block;
 }
 
 .label {
-  font-size: 0.6em;
-  color: white;
+  font-size: 0.75em;
+  color: white !important;
   letter-spacing: 0.15em;
   text-transform: lowercase;
+  display: block;
 }
 
 .nav-buttons {
@@ -60,6 +65,7 @@ body {
 }
 
 .nav-button {
+  font-family: '29LT Makina', sans-serif;
   font-size: 0.9em;
   padding: 10px 20px;
   border-radius: 999px;
@@ -71,7 +77,6 @@ body {
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  font-family: '29LT Makina', sans-serif;
 }
 
 .nav-button:hover {
