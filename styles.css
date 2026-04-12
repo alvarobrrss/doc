@@ -30,7 +30,7 @@ body {
 
 .countdown {
   display: flex;
-  gap: 70px;
+  gap: clamp(20px, 5vw, 70px);
   justify-content: center;
   align-items: flex-start;
 }
@@ -43,19 +43,37 @@ body {
 }
 
 .countdown-item .number {
-  font-size: clamp(3.5em, 10vw, 9em);
+  font-size: clamp(3em, 9vw, 8em);
   color: white;
   letter-spacing: 0.05em;
   line-height: 1;
   font-family: '29LT Makina', monospace;
+  position: relative;
+  display: block;
 }
 
+/* Jerarquía visual */
+#item-days .number    { font-size: clamp(3.5em, 11vw, 10em); }
+#item-hours .number   { font-size: clamp(3em,   9vw,  8em);  }
+#item-minutes .number { font-size: clamp(2.5em, 7vw,  6.5em); }
+#item-seconds .number { font-size: clamp(2.5em, 7vw,  6.5em); }
+
 .countdown-item .label {
-  font-size: clamp(0.5em, 1.5vw, 0.85em);
+  font-size: clamp(0.45em, 1.2vw, 0.8em);
   color: white;
   letter-spacing: 0.2em;
   font-family: '29LT Makina', monospace;
   text-transform: lowercase;
+}
+
+/* Animación fade+slide */
+.number.animate {
+  animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .nav-buttons {
@@ -99,20 +117,23 @@ body {
 }
 
 @keyframes grainEffect {
-  0% { transform: translate(0, 0); }
+  0%   { transform: translate(0, 0); }
   100% { transform: translate(-5px, 5px); }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .countdown {
-    gap: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
-  .countdown-item .number {
-    font-size: clamp(2.5em, 12vw, 4em);
-  }
+  #item-days .number    { font-size: clamp(2.5em, 14vw, 4em); }
+  #item-hours .number   { font-size: clamp(2em,   12vw, 3.5em); }
+  #item-minutes .number { font-size: clamp(1.8em, 10vw, 3em); }
+  #item-seconds .number { font-size: clamp(1.8em, 10vw, 3em); }
 
   .countdown-item .label {
-    font-size: clamp(0.45em, 2.5vw, 0.7em);
+    font-size: clamp(0.5em, 3vw, 0.7em);
   }
 }
