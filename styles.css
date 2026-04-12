@@ -80,9 +80,11 @@ html, body {
 
 .nav-buttons {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+  gap: 0;
 }
 
 .nav-button {
@@ -104,6 +106,14 @@ html, body {
 .nav-button:hover {
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.disclaimer {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.7em;
+  color: #f5c400;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .grain {
@@ -141,6 +151,10 @@ html, body {
   .nav-button {
     font-size: 0.8em;
     padding: 10px 18px;
+  }
+
+  .disclaimer {
+    font-size: 0.65em;
   }
 }
 
