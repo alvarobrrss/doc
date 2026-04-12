@@ -39,7 +39,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0px;
+  gap: 0;
 }
 
 .countdown-item .number {
@@ -49,6 +49,7 @@ body {
   line-height: 1;
   font-family: '29LT Makina', monospace;
   display: block;
+  margin-bottom: -8px;
 }
 
 .countdown-item .label {
@@ -57,7 +58,7 @@ body {
   letter-spacing: 0.1em;
   font-family: '29LT Makina', monospace;
   text-transform: lowercase;
-  margin-top: 6px;
+  margin-top: 0;
 }
 
 .nav-buttons {
