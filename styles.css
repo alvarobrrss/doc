@@ -2,13 +2,11 @@
   font-family: '29LT Makina';
   src: url('./29lt-makina-regular.otf') format('opentype');
 }
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
 html, body {
   width: 100%;
   height: 100%;
@@ -16,7 +14,6 @@ html, body {
   overflow: hidden;
   font-family: '29LT Makina', monospace;
 }
-
 .background-video {
   position: fixed;
   top: 50%;
@@ -29,7 +26,6 @@ html, body {
   object-fit: cover;
   z-index: 0;
 }
-
 .main-wrapper {
   display: flex;
   flex-direction: column;
@@ -40,11 +36,9 @@ html, body {
   width: 100vw;
   position: relative;
   z-index: 10;
-  gap: 40px;
   padding: 20px;
   padding-bottom: 120px;
 }
-
 .countdown {
   display: flex;
   gap: clamp(16px, 5vw, 60px);
@@ -52,14 +46,12 @@ html, body {
   align-items: flex-start;
   width: 100%;
 }
-
 .countdown-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0;
 }
-
 .countdown-item .number {
   font-size: clamp(2.5em, 8vw, 8em);
   color: white;
@@ -69,7 +61,6 @@ html, body {
   display: block;
   margin-bottom: -8px;
 }
-
 .countdown-item .label {
   font-size: clamp(0.8em, 2vw, 1.5em);
   color: white;
@@ -78,44 +69,6 @@ html, body {
   text-transform: lowercase;
   margin-top: 0;
 }
-
-.nav-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  gap: 10px;
-}
-
-.nav-button {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 0.9em;
-  padding: 10px 24px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  text-align: center;
-}
-
-.nav-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-}
-
-.disclaimer {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 0.72em;
-  color: #f5c400;
-  text-align: center;
-  margin: 0;
-}
-
 .bottom-image {
   position: fixed;
   bottom: 20px;
@@ -129,7 +82,6 @@ html, body {
   -webkit-user-select: none;
   -webkit-user-drag: none;
 }
-
 .grain {
   position: fixed;
   top: 0;
@@ -143,53 +95,35 @@ html, body {
   animation: grainEffect 1s steps(5) infinite;
   pointer-events: none;
 }
-
 @keyframes grainEffect {
   0%   { transform: translate(0, 0); }
   100% { transform: translate(-5px, 5px); }
 }
-
 @media (max-width: 600px) {
   .countdown {
     gap: clamp(10px, 4vw, 24px);
   }
-
   .countdown-item .number {
     font-size: clamp(2em, 10vw, 3.5em);
   }
-
   .countdown-item .label {
     font-size: clamp(0.6em, 3.5vw, 1em);
   }
-
-  .nav-button {
-    font-size: 0.8em;
-    padding: 10px 18px;
-  }
-
-  .disclaimer {
-    font-size: 0.65em;
-  }
-
   .bottom-image {
     width: clamp(140px, 55vw, 240px);
     bottom: 14px;
   }
-
   .main-wrapper {
     padding-bottom: 100px;
   }
 }
-
 @media (max-width: 380px) {
   .countdown-item .number {
     font-size: clamp(1.6em, 9vw, 2.5em);
   }
-
   .countdown-item .label {
     font-size: clamp(0.5em, 3vw, 0.8em);
   }
-
   .bottom-image {
     width: clamp(120px, 60vw, 180px);
   }
