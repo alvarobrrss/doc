@@ -539,9 +539,14 @@ function endGame(){
   beep([523,659,784,1047,1319],'square',0.1);
   window.scrollTo(0,0);
 }
+let sendingScore=false;
+function scoreSubmitKey(nombre,telefono){
+  return 'guijo-score-submit:'+nombre.toLowerCase().replace(/\s+/g,' ').trim()+':'+telefono.replace(/\s+/g,'').trim();
+}
 async function sendScore(e){
   e.preventDefault();
   const m=$('formmsg');
+  const submitBtn=$('contestform').querySelector('.btn-main');
   const data={
     nombre:$('f-nombre').value.trim(),
     telefono:$('f-tel').value.trim(),
@@ -549,6 +554,22 @@ async function sendScore(e){
     total:game.length,
     fecha:new Date().toLocaleString('es-ES')
   };
+  const key=scoreSubmitKey(data.nombre,data.telefono);
+  const now=Date.now();
+  const last=Number(localStorage.getItem(key)||0);
+  if(sendingScore){
+    m.textContent='YA SE ESTÁ ENVIANDO…';m.className='';
+    return false;
+  }
+  if(last&&now-last<60000){
+    const wait=Math.ceil((60000-(now-last))/1000);
+    m.textContent='Espera '+wait+' segundos antes de registrar otra partida con el mismo nombre y teléfono.';
+    m.className='ko';
+    return false;
+  }
+  sendingScore=true;
+  localStorage.setItem(key,String(now));
+  submitBtn.disabled=true;
   m.textContent='ENVIANDO…';m.className='';
   try{
     await fetch(SHEETS_URL,{
@@ -557,8 +578,10 @@ async function sendScore(e){
       body:new URLSearchParams(data).toString()
     });
     m.textContent='✔ ¡REGISTRADO! Tus puntos ya cuentan. ¡Suerte!';m.className='ok';
-    $('contestform').querySelector('.btn-main').disabled=true;
   }catch(err){
+    localStorage.removeItem(key);
+    sendingScore=false;
+    submitBtn.disabled=false;
     m.textContent='✘ No se pudo enviar. Haz una captura de pantalla y envíala por redes o email.';
     m.className='ko';
   }
