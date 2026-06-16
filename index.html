@@ -641,7 +641,7 @@ async function sendScore(e){
     nombre:$('f-nombre').value.trim(),
     telefono:cleanPhoneForSheets(rawTelefono),
     puntos:score,
-    total:game.length,
+    total:game.length+(hasSpecial?1:0),
     especial:hasSpecial?'Sí':'No',
     especial_acertada:hasSpecial?(specialCorrect?'Sí':'No'):'No',
     pregunta_especial:hasSpecial?SPECIAL_Q.q:'',
