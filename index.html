@@ -150,19 +150,19 @@
   <main class="main-wrapper">
     <div class="countdown">
       <div class="countdown-item">
-        <span class="number" id="days">—</span>
+        <span class="number" id="days">&nbsp;</span>
         <span class="label" id="days-l">días</span>
       </div>
       <div class="countdown-item">
-        <span class="number" id="hours">—</span>
+        <span class="number" id="hours">&nbsp;</span>
         <span class="label" id="hours-l">horas</span>
       </div>
       <div class="countdown-item">
-        <span class="number" id="minutes">—</span>
+        <span class="number" id="minutes">&nbsp;</span>
         <span class="label" id="minutes-l">minutos</span>
       </div>
       <div class="countdown-item">
-        <span class="number" id="seconds">—</span>
+        <span class="number" id="seconds">&nbsp;</span>
         <span class="label" id="seconds-l">segundos</span>
       </div>
     </div>
@@ -174,11 +174,9 @@
   <img class="bottom-image" src="aunquedalomejor.png" alt="" draggable="false" onerror="this.style.display='none'" />
 
   <script>
-  /* protección básica del material */
   addEventListener('contextmenu', e => e.preventDefault());
   addEventListener('dragstart', e => e.preventDefault());
 
-  /* ---------- cuenta atrás (sin ceros por delante) ---------- */
   function unidad(id, v, sing, plur){
     document.getElementById(id).textContent = v;
     document.getElementById(id + '-l').textContent = (v === 1 ? sing : plur);
@@ -194,7 +192,6 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  /* ---------- grano de película (generado, siempre activo) ---------- */
   (function(){
     const g = document.getElementById('grano');
     const gx = g.getContext('2d');
@@ -236,8 +233,6 @@
     requestAnimationFrame(granoPaso);
   })();
 
-  /* ---------- fondo: fotos y vídeos que se van pintando ----------
-     La web usa las versiones optimizadas de la carpeta web. */
   const NF = 28, NV = 18;
   const ITEMS = [];
   for (let i = 1; i <= NF; i++) ITEMS.push({ t: 'f', src: 'web/f' + String(i).padStart(2,'0') + '.jpg' });
@@ -247,10 +242,9 @@
     [ITEMS[i], ITEMS[j]] = [ITEMS[j], ITEMS[i]];
   }
 
-  const REVELADO   = 4200;
-  const REPOSO_F   = 5800;
-  const REPOSO_V   = 7500;
-  const FUNDIDO    = 1300;
+  const REVELADO = 4200;
+  const REPOSO_F = 5800;
+  const FUNDIDO  = 1300;
 
   const cv = document.getElementById('lienzo');
   const ctx = cv.getContext('2d');
@@ -312,7 +306,6 @@
   function espera(ms){ return new Promise(r => setTimeout(r, ms)); }
 
   function pintar(m){
-    /* brochazos horizontales que barren la pantalla, como pintando un cuadro */
     return new Promise(res => {
       const mascara = document.createElement('canvas');
       mascara.width = W; mascara.height = H;
@@ -368,4 +361,91 @@
         }
         ctx.clearRect(0, 0, W, H);
         ctx.drawImage(mascara, 0, 0);
-   
+        ctx.globalCompositeOperation = 'source-in';
+        dibujar(m);
+        ctx.globalCompositeOperation = 'source-over';
+        if (p < 1) requestAnimationFrame(paso); else res();
+      })(t0);
+    });
+  }
+
+  function mostrar(m, ms){
+    return new Promise(res => {
+      const t0 = performance.now();
+      (function paso(t){
+        ctx.clearRect(0, 0, W, H);
+        dibujar(m);
+        if (t - t0 < ms) requestAnimationFrame(paso); else res();
+      })(t0);
+    });
+  }
+
+  function hastaElFinal(v){
+    return new Promise(res => {
+      const tope = performance.now() + ((v.duration || 30) + 3) * 1000;
+      (function paso(t){
+        ctx.clearRect(0, 0, W, H);
+        dibujar(v);
+        if (!v.ended && t < tope) requestAnimationFrame(paso); else res();
+      })(performance.now());
+    });
+  }
+
+  function fundirEntrada(m, ms){
+    return new Promise(res => {
+      const t0 = performance.now();
+      (function paso(t){
+        const p = Math.min((t - t0) / ms, 1);
+        ctx.clearRect(0, 0, W, H);
+        dibujar(m, p);
+        if (p < 1) requestAnimationFrame(paso); else res();
+      })(t0);
+    });
+  }
+
+  function fundirANegro(m){
+    return new Promise(res => {
+      const t0 = performance.now();
+      (function paso(t){
+        const p = Math.min((t - t0) / FUNDIDO, 1);
+        ctx.clearRect(0, 0, W, H);
+        dibujar(m, 1 - p);
+        if (p < 1) requestAnimationFrame(paso); else res();
+      })(t0);
+    });
+  }
+
+  async function ciclo(){
+    if (ahorro || !ITEMS.length) return;
+    let vA = mkVideo(), vB = mkVideo();
+    let media = await cargar(ITEMS[0], vA);
+    let i = 0;
+    while (true){
+      const sigItem = ITEMS[(i + 1) % ITEMS.length];
+      const sigVideo = (media === vA) ? vB : vA;
+      const precarga = cargar(sigItem, sigVideo);
+      if (media){
+        if (media.play){ try { await media.play(); } catch(e){} }
+        cv.classList.remove('kb'); void cv.offsetWidth; cv.classList.add('kb');
+        if (reduced) await fundirEntrada(media, 1200);
+        else await pintar(media);
+        if (media.play){
+          if (media.ended) await mostrar(media, 800);
+          else await hastaElFinal(media);
+        } else {
+          await mostrar(media, REPOSO_F);
+        }
+        await fundirANegro(media);
+        if (media.pause) media.pause();
+      } else {
+        await espera(300);
+      }
+      const sig = await precarga;
+      media = sig || media;
+      i++;
+    }
+  }
+  ciclo();
+  </script>
+</body>
+</html>
