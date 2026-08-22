@@ -57,7 +57,7 @@
       display: flex; flex-direction: column;
       justify-content: center; align-items: center;
       min-height: 100vh; min-height: 100dvh; width: 100vw;
-      padding: 20px 20px 160px;
+      padding: 20px 20px 60px;
       text-align: center;
     }
 
@@ -142,7 +142,7 @@
     /* --- Galería del estreno --- */
     .galeria {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(6, 1fr);
       gap: 10px;
       width: 100%;
       max-width: 1100px;
@@ -168,17 +168,12 @@
       filter: none;
     }
 
-    .bottom-image {
-      position: fixed; bottom: 20px; left: 50%;
-      transform: translateX(-50%);
-      width: clamp(180px, 30vw, 360px); height: auto;
-      z-index: 20; pointer-events: none;
-      user-select: none; -webkit-user-select: none; -webkit-user-drag: none;
+    @media (max-width: 900px) {
+      .galeria { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 600px) {
-      .galeria { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
-      .bottom-image { width: clamp(140px, 55vw, 240px); bottom: 14px; }
-      .main-wrapper { padding-bottom: 130px; }
+      .galeria { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .main-wrapper { padding-bottom: 40px; }
     }
     @media (prefers-reduced-motion: reduce) {
       #lienzo.kb { animation: none; }
@@ -197,10 +192,6 @@
         <span class="firma">Gracias de corazón.<br>— Álvaro</span>
       </p>
 
-      <!-- BOTÓN PRINCIPAL: el vídeo se sube el martes.
-           Ese día, sustituye este <div> por:
-           <a class="ya-disponible" href="URL_DEL_VIDEO" target="_blank" rel="noopener">Ya disponible</a>
-           y borra el <span class="nota-disponible">…</span> de debajo. -->
       <div class="ya-disponible" aria-disabled="true">Ya disponible</div>
       <span class="nota-disponible">el vídeo se publica el martes</span>
 
@@ -210,23 +201,21 @@
     </div>
 
     <section class="galeria" aria-label="Fotos del estreno">
-      <a class="foto" href="estreno/fotosnochedocumental (1).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (1).jpg" alt="Estreno del documental en la plaza de Guijo de Granadilla" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (2).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (2).jpg" alt="Público en la plaza durante el estreno del documental" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (3).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (3).jpg" alt="Vecinos viendo el documental en la plaza de Guijo de Granadilla" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (4).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (4).jpg" alt="Público sentado viendo la proyección" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (5).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (5).jpg" alt="Proyección del documental en la plaza" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (6).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (6).jpg" alt="Escena proyectada del documental" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (7).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (7).jpg" alt="Recuerdo del estreno del documental" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (8).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (8).jpg" alt="Plaza llena durante el estreno" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (9).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (9).jpg" alt="Fotos del pueblo colgadas con pinzas la noche del estreno" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (10).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (10).jpg" alt="Público del estreno del documental" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (11).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (11).jpg" alt="Ambiente del estreno del documental" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (12).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (12).jpg" alt="Público del estreno del documental" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (13).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (13).jpg" alt="Plaza llena durante el estreno" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (1).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (1).jpg" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (2).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (2).jpg" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (3).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (3).jpg" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (4).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (4).jpg" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (5).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (5).jpg" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (6).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (6).jpg" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (8).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (8).jpg" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (9).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (9).jpg" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (10).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (10).jpg" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (11).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (11).jpg" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (12).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (12).jpg" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (13).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (13).jpg" loading="lazy"></a>
     </section>
 
   </main>
-  <img class="bottom-image" src="aunquedalomejor.png" alt="" draggable="false" onerror="this.style.display='none'" />
   <script>
   addEventListener('contextmenu', e => e.preventDefault());
   addEventListener('dragstart', e => e.preventDefault());
