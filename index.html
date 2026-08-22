@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Guijo de Granadilla — El Documental</title>
-  <meta name="description" content="El documental de Guijo de Granadilla. Estreno: 15 de agosto de 2026.">
+  <meta name="description" content="El documental de Guijo de Granadilla. Ya disponible.">
   <link rel="icon" type="image/x-icon" href="vhs.ico" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJSFRMBW0E"></script>
   <script>
@@ -21,14 +21,13 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      width: 100%; height: 100%;
+      width: 100%; min-height: 100%;
       background: #000;
-      overflow: hidden;
+      overflow-x: hidden;
       font-family: '29LT Makina', monospace;
       color: #fff;
       user-select: none; -webkit-user-select: none;
     }
-
     #lienzo {
       position: fixed; inset: 0;
       width: 100vw; height: 100vh;
@@ -53,40 +52,57 @@
       opacity: .26;
       mix-blend-mode: overlay;
     }
-
     .main-wrapper {
       position: relative; z-index: 10;
       display: flex; flex-direction: column;
       justify-content: center; align-items: center;
-      height: 100vh; height: 100dvh; width: 100vw;
-      padding: 20px;
+      min-height: 100vh; min-height: 100dvh; width: 100vw;
+      padding: 20px 20px 160px;
       text-align: center;
     }
-    .countdown {
+
+    /* --- Mensaje del estreno --- */
+    .post-estreno {
       display: flex;
-      gap: clamp(16px, 5vw, 60px);
-      justify-content: center;
-      align-items: flex-start;
-      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      max-width: 720px;
+      margin-top: clamp(30px, 6vh, 70px);
     }
-    .countdown-item { display: flex; flex-direction: column; align-items: center; }
-    .countdown-item .number {
-      font-size: clamp(2.5em, 8vw, 8em);
+    .mensaje {
+      font-size: clamp(.95em, 2vw, 1.15em);
+      line-height: 1.8;
+      letter-spacing: .01em;
+      color: rgba(255,255,255,.92);
+      text-shadow: 0 2px 20px rgba(0,0,0,.85);
+    }
+    .mensaje .firma { display: block; margin-top: 1.4em; opacity: .85; }
+
+    .ya-disponible {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: '29LT Makina', monospace;
+      font-size: clamp(1em, 2.6vw, 1.5em);
+      letter-spacing: .3em;
+      text-indent: .3em;
+      text-transform: uppercase;
       color: #fff;
-      letter-spacing: .05em;
-      line-height: 1;
-      display: block;
-      margin-bottom: -8px;
-      text-shadow: 0 4px 30px rgba(0,0,0,.85);
-      font-variant-numeric: tabular-nums;
+      border: 1px solid rgba(255,255,255,.85);
+      padding: 16px 42px;
+      margin: clamp(30px, 6vh, 60px) 0 0;
+      background: rgba(0,0,0,.32);
+      backdrop-filter: blur(3px);
+      cursor: default;
     }
-    .countdown-item .label {
-      font-size: clamp(.8em, 2vw, 1.5em);
-      color: rgba(255,255,255,.85);
-      letter-spacing: .1em;
-      text-transform: lowercase;
+    .nota-disponible {
+      display: block;
+      margin-top: 12px;
+      font-size: clamp(.55em, 1.3vw, .7em);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
       text-shadow: 0 2px 14px rgba(0,0,0,.8);
     }
+
     .trailer-btn {
       display: inline-flex; align-items: center; gap: 9px;
       font-family: '29LT Makina', monospace;
@@ -103,6 +119,12 @@
       backdrop-filter: blur(3px);
       transition: background .35s ease, color .35s ease, box-shadow .35s ease, transform .35s ease;
     }
+    .trailer-btn.secundario {
+      margin-top: 18px;
+      font-size: clamp(.55em, 1.1vw, .7em);
+      padding: 8px 18px;
+      opacity: .85;
+    }
     .trailer-btn .play {
       width: 0; height: 0;
       border-top: 5px solid transparent;
@@ -116,6 +138,36 @@
       transform: translateY(-2px);
       outline: none;
     }
+
+    /* --- Galería del estreno --- */
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      width: 100%;
+      max-width: 1100px;
+      margin: clamp(50px, 9vh, 100px) 0 0;
+    }
+    .foto {
+      display: block;
+      position: relative;
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.25);
+      background: #000;
+    }
+    .foto img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: sepia(.15) contrast(1.05) saturate(.95);
+      transition: transform .6s ease, filter .6s ease;
+    }
+    .foto:hover img, .foto:focus-visible img {
+      transform: scale(1.06);
+      filter: none;
+    }
+
     .bottom-image {
       position: fixed; bottom: 20px; left: 50%;
       transform: translateX(-50%);
@@ -123,18 +175,10 @@
       z-index: 20; pointer-events: none;
       user-select: none; -webkit-user-select: none; -webkit-user-drag: none;
     }
-
     @media (max-width: 600px) {
-      .countdown { gap: clamp(10px, 4vw, 24px); }
-      .countdown-item .number { font-size: clamp(2em, 10vw, 3.5em); }
-      .countdown-item .label { font-size: clamp(.6em, 3.5vw, 1em); }
+      .galeria { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
       .bottom-image { width: clamp(140px, 55vw, 240px); bottom: 14px; }
-      .main-wrapper { padding-bottom: 100px; }
-    }
-    @media (max-width: 380px) {
-      .countdown-item .number { font-size: clamp(1.6em, 9vw, 2.5em); }
-      .countdown-item .label { font-size: clamp(.5em, 3vw, .8em); }
-      .bottom-image { width: clamp(120px, 60vw, 180px); }
+      .main-wrapper { padding-bottom: 130px; }
     }
     @media (prefers-reduced-motion: reduce) {
       #lienzo.kb { animation: none; }
@@ -142,56 +186,50 @@
   </style>
 </head>
 <body>
-
   <canvas id="lienzo"></canvas>
   <div class="velo"></div>
   <canvas id="grano"></canvas>
-
   <main class="main-wrapper">
-    <div class="countdown">
-      <div class="countdown-item">
-        <span class="number" id="days">&nbsp;</span>
-        <span class="label" id="days-l">días</span>
-      </div>
-      <div class="countdown-item">
-        <span class="number" id="hours">&nbsp;</span>
-        <span class="label" id="hours-l">horas</span>
-      </div>
-      <div class="countdown-item">
-        <span class="number" id="minutes">&nbsp;</span>
-        <span class="label" id="minutes-l">minutos</span>
-      </div>
-      <div class="countdown-item">
-        <span class="number" id="seconds">&nbsp;</span>
-        <span class="label" id="seconds-l">segundos</span>
-      </div>
+
+    <div class="post-estreno">
+      <p class="mensaje">
+        Esto ya es, y será siempre, de todos vosotros.
+        <span class="firma">Gracias de corazón.<br>— Álvaro</span>
+      </p>
+
+      <!-- BOTÓN PRINCIPAL: el vídeo se sube el martes.
+           Ese día, sustituye este <div> por:
+           <a class="ya-disponible" href="URL_DEL_VIDEO" target="_blank" rel="noopener">Ya disponible</a>
+           y borra el <span class="nota-disponible">…</span> de debajo. -->
+      <div class="ya-disponible" aria-disabled="true">Ya disponible</div>
+      <span class="nota-disponible">el vídeo se publica el martes</span>
+
+      <a class="trailer-btn secundario" href="https://www.youtube.com/watch?v=1rxE3RX7C4E" target="_blank" rel="noopener">
+        <span class="play"></span>Ver tráiler
+      </a>
     </div>
-    <a class="trailer-btn" href="https://www.youtube.com/watch?v=1rxE3RX7C4E" target="_blank" rel="noopener">
-      <span class="play"></span>Ver tráiler
-    </a>
+
+    <section class="galeria" aria-label="Fotos del estreno">
+      <a class="foto" href="estreno/fotosnochedocumental (1).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (1).jpg" alt="Estreno del documental en la plaza de Guijo de Granadilla" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (2).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (2).jpg" alt="Público en la plaza durante el estreno del documental" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (3).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (3).jpg" alt="Vecinos viendo el documental en la plaza de Guijo de Granadilla" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (4).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (4).jpg" alt="Público sentado viendo la proyección" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (5).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (5).jpg" alt="Proyección del documental en la plaza" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (6).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (6).jpg" alt="Escena proyectada del documental" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (7).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (7).jpg" alt="Recuerdo del estreno del documental" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (8).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (8).jpg" alt="Plaza llena durante el estreno" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (9).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (9).jpg" alt="Fotos del pueblo colgadas con pinzas la noche del estreno" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (10).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (10).jpg" alt="Público del estreno del documental" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (11).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (11).jpg" alt="Ambiente del estreno del documental" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (12).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (12).jpg" alt="Público del estreno del documental" loading="lazy"></a>
+      <a class="foto" href="estreno/fotosnochedocumental (13).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (13).jpg" alt="Plaza llena durante el estreno" loading="lazy"></a>
+    </section>
+
   </main>
-
   <img class="bottom-image" src="aunquedalomejor.png" alt="" draggable="false" onerror="this.style.display='none'" />
-
   <script>
   addEventListener('contextmenu', e => e.preventDefault());
   addEventListener('dragstart', e => e.preventDefault());
-
-  function unidad(id, v, sing, plur){
-    document.getElementById(id).textContent = v;
-    document.getElementById(id + '-l').textContent = (v === 1 ? sing : plur);
-  }
-  function updateCountdown() {
-    const diff = new Date('2026-08-15T00:00:00') - new Date();
-    if (diff <= 0) return;
-    unidad('days',    Math.floor(diff / 864e5),        'día',     'días');
-    unidad('hours',   Math.floor(diff % 864e5 / 36e5), 'hora',    'horas');
-    unidad('minutes', Math.floor(diff % 36e5 / 6e4),   'minuto',  'minutos');
-    unidad('seconds', Math.floor(diff % 6e4 / 1e3),    'segundo', 'segundos');
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
   (function(){
     const g = document.getElementById('grano');
     const gx = g.getContext('2d');
@@ -232,7 +270,6 @@
     }
     requestAnimationFrame(granoPaso);
   })();
-
   const NF = 28, NV = 18;
   const ITEMS = [];
   for (let i = 1; i <= NF; i++) ITEMS.push({ t: 'f', src: 'web/f' + String(i).padStart(2,'0') + '.jpg' });
@@ -241,11 +278,9 @@
     const j = Math.random() * (i + 1) | 0;
     [ITEMS[i], ITEMS[j]] = [ITEMS[j], ITEMS[i]];
   }
-
   const REVELADO = 4200;
   const REPOSO_F = 5800;
   const FUNDIDO  = 1300;
-
   const cv = document.getElementById('lienzo');
   const ctx = cv.getContext('2d');
   let W, H;
@@ -256,10 +291,8 @@
   }
   resize();
   addEventListener('resize', resize);
-
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ahorro = navigator.connection && navigator.connection.saveData;
-
   function mkVideo(){
     const v = document.createElement('video');
     v.muted = true;
@@ -269,7 +302,6 @@
     v.loop = false;
     return v;
   }
-
   function cargar(item, v){
     return new Promise(res => {
       if (item.t === 'f'){
@@ -289,11 +321,9 @@
       }
     });
   }
-
   function medidas(m){
     return m.videoWidth ? [m.videoWidth, m.videoHeight] : [m.naturalWidth || m.width, m.naturalHeight || m.height];
   }
-
   function dibujar(m, alpha){
     const [mw, mh] = medidas(m);
     if (!mw) return;
@@ -302,9 +332,7 @@
     ctx.drawImage(m, (W - mw * r) / 2, (H - mh * r) / 2, mw * r, mh * r);
     ctx.globalAlpha = 1;
   }
-
   function espera(ms){ return new Promise(r => setTimeout(r, ms)); }
-
   function pintar(m){
     return new Promise(res => {
       const mascara = document.createElement('canvas');
@@ -368,7 +396,6 @@
       })(t0);
     });
   }
-
   function mostrar(m, ms){
     return new Promise(res => {
       const t0 = performance.now();
@@ -379,7 +406,6 @@
       })(t0);
     });
   }
-
   function hastaElFinal(v){
     return new Promise(res => {
       const tope = performance.now() + ((v.duration || 30) + 3) * 1000;
@@ -390,7 +416,6 @@
       })(performance.now());
     });
   }
-
   function fundirEntrada(m, ms){
     return new Promise(res => {
       const t0 = performance.now();
@@ -402,7 +427,6 @@
       })(t0);
     });
   }
-
   function fundirANegro(m){
     return new Promise(res => {
       const t0 = performance.now();
@@ -414,7 +438,6 @@
       })(t0);
     });
   }
-
   async function ciclo(){
     if (ahorro || !ITEMS.length) return;
     let vA = mkVideo(), vB = mkVideo();
