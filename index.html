@@ -1,463 +1,356 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Guijo de Granadilla — El Documental</title>
-  <meta name="description" content="El documental de Guijo de Granadilla. Ya disponible.">
-  <link rel="icon" type="image/x-icon" href="vhs.ico" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJSFRMBW0E"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WJSFRMBW0E');
-  </script>
-  <style>
-    @font-face {
-      font-family: '29LT Makina';
-      src: url('./29lt-makina-regular.otf') format('opentype');
-      font-display: swap;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-      width: 100%; min-height: 100%;
-      background: #000;
-      overflow-x: hidden;
-      font-family: '29LT Makina', monospace;
-      color: #fff;
-      user-select: none; -webkit-user-select: none;
-    }
-    #lienzo {
-      position: fixed; inset: 0;
-      width: 100vw; height: 100vh;
-      z-index: 0;
-      filter: sepia(.22) contrast(1.05) brightness(.8) saturate(.9);
-    }
-    #lienzo.kb { animation: kenburns 18s ease-in-out forwards; }
-    @keyframes kenburns {
-      0%   { transform: scale(1.03); }
-      100% { transform: scale(1.1); }
-    }
-    .velo {
-      position: fixed; inset: 0; z-index: 1; pointer-events: none;
-      background:
-        radial-gradient(ellipse at center, rgba(0,0,0,.28) 0%, rgba(0,0,0,.74) 100%),
-        linear-gradient(180deg, rgba(0,0,0,.35) 0%, transparent 25%, transparent 70%, rgba(0,0,0,.55) 100%);
-    }
-    #grano {
-      position: fixed; inset: 0;
-      width: 100vw; height: 100vh;
-      z-index: 2; pointer-events: none;
-      opacity: .26;
-      mix-blend-mode: overlay;
-    }
-    .main-wrapper {
-      position: relative; z-index: 10;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      min-height: 100vh; min-height: 100dvh; width: 100vw;
-      padding: 20px 20px 60px;
-      text-align: center;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Guijo de Granadilla — El Documental</title>
+<meta name="description" content="Un documental sobre la memoria de Guijo de Granadilla, construido durante casi cuatro años a partir de cintas familiares, fotografías y las voces de quienes llevan toda la vida en el pueblo.">
+<link rel="icon" type="image/x-icon" href="vhs.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WJSFRMBW0E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WJSFRMBW0E');
+</script>
+<style>
+  @font-face {
+    font-family: '29LT Makina';
+    src: url('./29lt-makina-regular.otf') format('opentype');
+    font-display: swap;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0b0a08;
+    color: #f3ede2;
+    font-family: 'Playfair Display', Georgia, serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
 
-    /* --- Mensaje del estreno --- */
-    .post-estreno {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 720px;
-      margin-top: clamp(30px, 6vh, 70px);
-    }
-    .mensaje {
-      font-size: clamp(.95em, 2vw, 1.15em);
-      line-height: 1.8;
-      letter-spacing: .01em;
-      color: rgba(255,255,255,.92);
-      text-shadow: 0 2px 20px rgba(0,0,0,.85);
-    }
-    .mensaje .firma { display: block; margin-top: 1.4em; opacity: .85; }
+  .kicker {
+    font-family: '29LT Makina', 'Courier New', monospace;
+    font-size: .78rem;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: #c9a24a;
+  }
 
-    .ya-disponible {
-      display: inline-flex; align-items: center; justify-content: center;
-      font-family: '29LT Makina', monospace;
-      font-size: clamp(1em, 2.6vw, 1.5em);
-      letter-spacing: .3em;
-      text-indent: .3em;
-      text-transform: uppercase;
-      color: #fff;
-      border: 1px solid rgba(255,255,255,.85);
-      padding: 16px 42px;
-      margin: clamp(30px, 6vh, 60px) 0 0;
-      background: rgba(0,0,0,.32);
-      backdrop-filter: blur(3px);
-      cursor: default;
-    }
-    .nota-disponible {
-      display: block;
-      margin-top: 12px;
-      font-size: clamp(.55em, 1.3vw, .7em);
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.55);
-      text-shadow: 0 2px 14px rgba(0,0,0,.8);
-    }
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+    transform: scale(1.06);
+    animation: hero-zoom 24s ease-out forwards;
+  }
+  @keyframes hero-zoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(11,10,8,.15) 0%, rgba(11,10,8,.35) 45%, rgba(11,10,8,.94) 100%),
+      linear-gradient(0deg, rgba(11,10,8,.5) 0%, transparent 30%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 8vh 6vw 7vh;
+    max-width: 1100px;
+  }
+  .hero-content .kicker { margin-bottom: 1.4rem; }
+  .hero-title {
+    font-family: '29LT Makina', 'Courier New', monospace;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: clamp(2rem, 6.6vw, 4.6rem);
+    line-height: 1.05;
+    letter-spacing: .01em;
+    text-wrap: balance;
+  }
+  .hero-subtitle {
+    font-family: '29LT Makina', 'Courier New', monospace;
+    font-weight: 400;
+    font-size: clamp(1rem, 2.2vw, 1.5rem);
+    letter-spacing: .14em;
+    color: #d8cdb6;
+    margin-top: .7em;
+  }
+  .hero-meta {
+    margin-top: 2.2rem;
+    font-family: '29LT Makina', 'Courier New', monospace;
+    font-size: .75rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #a99f8c;
+  }
+  .logo-trace {
+    position: absolute; z-index: 2;
+    top: 2.6rem; left: 50%;
+    transform: translateX(-50%);
+    width: clamp(46px, 6vw, 64px);
+  }
+  .logo-trace svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .logo-trace path {
+    fill: none;
+    stroke: rgba(243,237,226,.4);
+    stroke-width: 3;
+  }
+  .logo-trace circle { fill: #c9a24a; }
 
-    .trailer-btn {
-      display: inline-flex; align-items: center; gap: 9px;
-      font-family: '29LT Makina', monospace;
-      font-size: clamp(.6em, 1.3vw, .8em);
-      letter-spacing: .25em;
-      text-indent: .25em;
-      text-transform: uppercase;
-      color: #fff;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,.75);
-      padding: 9px 20px;
-      margin-top: clamp(30px, 6vh, 64px);
-      background: rgba(0,0,0,.28);
-      backdrop-filter: blur(3px);
-      transition: background .35s ease, color .35s ease, box-shadow .35s ease, transform .35s ease;
-    }
-    .trailer-btn.secundario {
-      margin-top: 18px;
-      font-size: clamp(.55em, 1.1vw, .7em);
-      padding: 8px 18px;
-      opacity: .85;
-    }
-    .trailer-btn .play {
-      width: 0; height: 0;
-      border-top: 5px solid transparent;
-      border-bottom: 5px solid transparent;
-      border-left: 8px solid currentColor;
-      transform: translateY(-1px);
-    }
-    .trailer-btn:hover, .trailer-btn:focus-visible {
-      background: #fff; color: #000;
-      box-shadow: 0 0 46px rgba(255,255,255,.35);
-      transform: translateY(-2px);
-      outline: none;
-    }
+  /* ---------- SECTIONS ---------- */
+  section { padding: clamp(4.5rem, 10vh, 8rem) 6vw; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
 
-    /* --- Galería del estreno --- */
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
-      width: 100%;
-      max-width: 1100px;
-      margin: clamp(50px, 9vh, 100px) 0 0;
-    }
-    .foto {
-      display: block;
-      position: relative;
-      aspect-ratio: 3 / 2;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.25);
-      background: #000;
-    }
-    .foto img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: sepia(.15) contrast(1.05) saturate(.95);
-      transition: transform .6s ease, filter .6s ease;
-    }
-    .foto:hover img, .foto:focus-visible img {
-      transform: scale(1.06);
-      filter: none;
-    }
+  /* ---------- MENSAJE ---------- */
+  .mensaje-wrap { max-width: 680px; margin: 0 auto; text-align: center; }
+  .mensaje {
+    font-family: '29LT Makina', 'Courier New', monospace;
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    line-height: 1.7;
+    letter-spacing: .01em;
+    color: #f3ede2;
+  }
+  .mensaje .firma {
+    display: block;
+    margin-top: 1.6em;
+    font-style: normal;
+    font-family: '29LT Makina', 'Courier New', monospace;
+    font-size: .78rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #a99f8c;
+  }
 
-    @media (max-width: 900px) {
-      .galeria { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (max-width: 600px) {
-      .galeria { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-      .main-wrapper { padding-bottom: 40px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      #lienzo.kb { animation: none; }
-    }
-  </style>
+  /* ---------- SINOPSIS / FICHA ---------- */
+  .split {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 5rem;
+    border-top: 1px solid rgba(243,237,226,.14);
+    padding-top: clamp(2.5rem, 6vh, 4rem);
+  }
+  .split h2, .ficha-title { margin-bottom: 1.1rem; }
+  .sinopsis p {
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    line-height: 1.75;
+    color: #ddd3c1;
+  }
+  .ficha dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    row-gap: 1.1rem;
+    column-gap: 1.5rem;
+  }
+  .ficha dt {
+    font-family: '29LT Makina', 'Courier New', monospace;
+    font-size: .72rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #a99f8c;
+    white-space: nowrap;
+    padding-top: .2em;
+  }
+  .ficha dd {
+    font-family: '29LT Makina', 'Courier New', monospace;
+    font-size: 1rem;
+    letter-spacing: .02em;
+    color: #f3ede2;
+  }
+  @media (max-width: 760px) {
+    .split { grid-template-columns: 1fr; gap: 2.4rem; }
+  }
+
+  /* ---------- CTA ---------- */
+  .cta { text-align: center; border-top: 1px solid rgba(243,237,226,.14); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: '29LT Makina', 'Courier New', monospace;
+    font-size: clamp(.95rem, 1.6vw, 1.15rem);
+    letter-spacing: .28em;
+    text-indent: .28em;
+    text-transform: uppercase;
+    color: #f3ede2;
+    text-decoration: none;
+    border: 1px solid rgba(243,237,226,.55);
+    padding: 1.1rem 2.6rem;
+    background: transparent;
+    transition: background .35s ease, color .35s ease, border-color .35s ease;
+  }
+  .btn:not(a) { cursor: default; }
+  a.btn:hover, a.btn:focus-visible { background: #f3ede2; color: #0b0a08; border-color: #f3ede2; outline: none; }
+  .trailer-link {
+    display: inline-flex; align-items: center; gap: .6em;
+    margin-top: 2rem;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #d8cdb6;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(216,205,182,.4);
+    padding-bottom: .15em;
+    transition: color .3s ease, border-color .3s ease;
+  }
+  .trailer-link:hover { color: #f3ede2; border-color: #f3ede2; }
+  .trailer-link .play {
+    width: 0; height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid currentColor;
+  }
+
+  /* ---------- GALERÍA ---------- */
+  .galeria-head { margin-bottom: 2.6rem; }
+  .galeria-head p { color: #a99f8c; font-style: italic; font-size: 1.1rem; margin-top: .5rem; }
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.1rem;
+  }
+  .foto {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: #14120f;
+  }
+  .foto img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: saturate(.94) contrast(1.03);
+    transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .5s ease;
+  }
+  .foto:hover img, .foto:focus-visible img { transform: scale(1.045); filter: saturate(1.05) contrast(1.05); }
+
+  @media (max-width: 900px) {
+    .galeria { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .galeria { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+    section { padding: 3.5rem 6vw; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    border-top: 1px solid rgba(243,237,226,.12);
+    padding: 2.6rem 6vw 3rem;
+    text-align: center;
+  }
+  .footer-logo {
+    margin: 0 auto;
+    width: clamp(120px, 16vw, 200px);
+    height: auto;
+    opacity: .82;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-img { animation: none; }
+  }
+</style>
 </head>
 <body>
-  <canvas id="lienzo"></canvas>
-  <div class="velo"></div>
-  <canvas id="grano"></canvas>
-  <main class="main-wrapper">
 
-    <div class="post-estreno">
+  <header class="hero">
+    <img class="hero-img" src="estreno/fotosnochedocumental (6).jpg" draggable="false">
+    <div class="logo-trace" aria-hidden="true">
+      <svg viewBox="0 0 300.00 266.42" xmlns="http://www.w3.org/2000/svg">
+        <path id="logoPath" d="M 276.78,51.62 C 274.91,48.57 272.20,47.33 269.12,46.43 C 266.04,45.53 262.06,47.67 258.30,46.21 C 254.55,44.74 251.80,44.33 246.58,37.64 C 241.36,30.95 232.76,11.12 226.97,6.09 C 221.19,1.05 216.23,8.45 211.87,7.44 C 207.51,6.42 204.02,1.24 200.83,0.00 C 197.63,-1.24 196.92,-1.69 192.71,0.00 C 188.50,1.69 180.65,5.07 175.58,10.14 C 170.51,15.21 168.52,27.16 162.28,30.43 C 156.05,33.70 143.80,28.96 138.17,29.75 C 132.53,30.54 131.86,34.56 128.47,35.16 C 125.09,35.76 120.59,33.28 117.88,33.36 C 115.18,33.43 114.35,33.96 112.25,35.61 C 110.14,37.27 107.18,39.37 105.26,43.28 C 103.34,47.18 102.85,54.58 100.75,59.05 C 98.65,63.52 98.72,70.89 92.64,70.10 C 86.55,69.31 71.26,57.70 64.24,54.32 C 57.21,50.94 54.17,50.26 50.49,49.81 C 46.81,49.36 45.64,49.40 42.15,51.62 C 38.66,53.83 34.00,61.27 29.53,63.11 C 25.06,64.95 19.46,59.65 15.33,62.66 C 11.19,65.66 7.29,70.25 4.73,81.14 C 2.18,92.04 0.11,119.27 0.00,128.02 C -0.11,136.78 2.40,132.42 4.06,133.66 C 5.71,134.90 4.36,136.93 9.92,135.46 C 15.48,134.00 30.92,126.71 37.42,124.87 C 43.91,123.03 46.21,123.78 48.91,124.42 C 51.62,125.06 52.29,125.17 53.64,128.70 C 55.00,132.23 56.84,140.31 57.02,145.60 C 57.21,150.90 59.95,151.65 54.77,160.48 C 49.59,169.31 30.77,190.31 25.92,198.57 C 21.07,206.84 24.49,206.80 25.69,210.07 C 26.90,213.34 30.47,216.79 33.13,218.18 C 35.80,219.57 33.40,223.48 41.70,218.41 C 50.00,213.34 72.88,190.53 82.95,187.75 C 93.01,184.97 97.07,198.72 102.10,201.73 C 107.14,204.73 109.35,205.37 113.15,205.79 C 116.94,206.20 119.98,206.42 124.87,204.21 C 129.75,201.99 134.30,193.95 142.45,192.49 C 150.60,191.02 167.13,194.06 173.78,195.42 C 180.43,196.77 181.78,191.51 182.34,200.60 C 182.91,209.69 177.12,239.89 177.16,249.96 C 177.20,260.03 180.43,258.30 182.57,261.01 C 184.71,263.71 186.55,266.90 190.01,266.19 C 193.46,265.48 197.07,259.77 203.31,256.72 C 209.54,253.68 222.35,250.86 227.42,247.93 C 232.49,245.00 232.53,242.82 233.73,239.14 C 234.94,235.46 234.94,229.83 234.64,225.85 C 234.34,221.86 234.64,221.04 231.93,215.25 C 229.23,209.47 220.66,199.44 218.41,191.13 C 216.15,182.83 217.28,170.51 218.41,165.44 C 219.53,160.37 219.31,161.53 225.17,160.71 C 231.03,159.88 246.32,161.16 253.57,160.48 C 260.82,159.80 263.45,159.13 268.67,156.65 C 273.89,154.17 280.20,149.77 284.90,145.60 C 289.59,141.44 295.68,136.06 296.84,131.63 C 298.01,127.20 294.67,123.10 291.89,119.01 C 289.11,114.91 282.08,116.12 280.17,107.06 C 278.25,98.01 280.95,73.93 280.39,64.69 C 279.83,55.45 278.66,54.66 276.78,51.62 Z"></path>
+        <circle r="4">
+          <animateMotion dur="9s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#logoPath"></mpath>
+          </animateMotion>
+        </circle>
+      </svg>
+    </div>
+    <div class="hero-content">
+      <span class="kicker">Un documental sobre</span>
+      <h1 class="hero-title">Guijo de Granadilla</h1>
+      <p class="hero-subtitle">El documental</p>
+      <p class="hero-meta">15 de agosto de 2026 · Guijo de Granadilla, Cáceres</p>
+    </div>
+  </header>
+
+  <section id="mensaje">
+    <div class="section-inner mensaje-wrap">
       <p class="mensaje">
-        Esto ya es, y será siempre, de todos vosotros.
-        <span class="firma">Gracias de corazón.<br>— Álvaro</span>
+        Esto ya es, y será siempre, de todos nosotros.
+        <span class="firma">— Álvaro</span>
       </p>
+    </div>
+  </section>
 
-      <div class="ya-disponible" aria-disabled="true">Ya disponible</div>
-      <span class="nota-disponible">el vídeo se publica el martes</span>
+  <section>
+    <div class="section-inner split">
+      <div class="sinopsis">
+        <span class="kicker">Sinopsis</span>
+        <p>Hay quien guarda, en el fondo de un cajón, la única cinta que queda de unas fiestas del Cristo. Hay quien recuerda cosas de Guijo de Granadilla que ya nadie más recuerda y que algún día dejará de poder contar. De ahí nace este documental: de la necesidad de sentarnos a tiempo con la gente mayor del pueblo y rescatar todo eso antes de que se perdiera para siempre. Tradiciones, fiestas, oficios que ya no existen, las calles de toda la vida contadas por quienes las vivieron. Es la memoria de un pueblo entero, reunida antes de que sea demasiado tarde.</p>
+      </div>
+      <div class="ficha">
+        <span class="kicker ficha-title">Ficha técnica</span>
+        <dl>
+          <dt>Dirección</dt><dd>Álvaro</dd>
+          <dt>Duración</dt><dd>90 min (aprox.)</dd>
+          <dt>Año</dt><dd>2026</dd>
+          <dt>Estreno</dt><dd>15 de agosto de 2026</dd>
+          <dt>Lugar</dt><dd>Guijo de Granadilla, Cáceres</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
 
-      <a class="trailer-btn secundario" href="https://www.youtube.com/watch?v=1rxE3RX7C4E" target="_blank" rel="noopener">
-        <span class="play"></span>Ver tráiler
+  <section class="cta">
+    <div class="section-inner">
+      <div class="btn" aria-disabled="true">Pulsa aquí para ver el documental completo</div>
+      <br>
+      <a class="trailer-link" href="https://www.youtube.com/watch?v=1rxE3RX7C4E" target="_blank" rel="noopener">
+        <span class="play"></span>Ver el tráiler
       </a>
     </div>
+  </section>
 
-    <section class="galeria" aria-label="Fotos del estreno">
-      <a class="foto" href="estreno/fotosnochedocumental (1).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (1).jpg" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (2).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (2).jpg" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (3).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (3).jpg" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (4).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (4).jpg" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (5).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (5).jpg" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (6).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (6).jpg" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (8).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (8).jpg" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (9).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (9).jpg" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (10).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (10).jpg" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (11).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (11).jpg" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (12).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (12).jpg" loading="lazy"></a>
-      <a class="foto" href="estreno/fotosnochedocumental (13).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (13).jpg" loading="lazy"></a>
-    </section>
+  <section>
+    <div class="section-inner">
+      <div class="galeria-head">
+        <span class="kicker">Así fue la noche del estreno</span>
+        <p>15 de agosto de 2026 — Guijo de Granadilla</p>
+      </div>
+      <div class="galeria">
+        <a class="foto" href="estreno/fotosnochedocumental (1).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (1).jpg" loading="lazy" draggable="false"></a>
+        <a class="foto" href="estreno/fotosnochedocumental (2).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (2).jpg" loading="lazy" draggable="false"></a>
+        <a class="foto" href="estreno/fotosnochedocumental (3).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (3).jpg" loading="lazy" draggable="false"></a>
+        <a class="foto" href="estreno/fotosnochedocumental (4).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (4).jpg" loading="lazy" draggable="false"></a>
+        <a class="foto" href="estreno/fotosnochedocumental (5).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (5).jpg" loading="lazy" draggable="false"></a>
+        <a class="foto" href="estreno/fotosnochedocumental (6).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (6).jpg" loading="lazy" draggable="false"></a>
+        <a class="foto" href="estreno/fotosnochedocumental (8).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (8).jpg" loading="lazy" draggable="false"></a>
+        <a class="foto" href="estreno/fotosnochedocumental (9).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (9).jpg" loading="lazy" draggable="false"></a>
+        <a class="foto" href="estreno/fotosnochedocumental (10).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (10).jpg" loading="lazy" draggable="false"></a>
+        <a class="foto" href="estreno/fotosnochedocumental (11).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (11).jpg" loading="lazy" draggable="false"></a>
+        <a class="foto" href="estreno/fotosnochedocumental (12).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (12).jpg" loading="lazy" draggable="false"></a>
+        <a class="foto" href="estreno/fotosnochedocumental (13).jpg" target="_blank" rel="noopener"><img src="estreno/fotosnochedocumental (13).jpg" loading="lazy" draggable="false"></a>
+      </div>
+    </div>
+  </section>
 
-  </main>
+  <footer>
+    <img class="footer-logo" src="logoblancodocumental.png" loading="lazy">
+  </footer>
+
   <script>
-  addEventListener('contextmenu', e => e.preventDefault());
-  addEventListener('dragstart', e => e.preventDefault());
-  (function(){
-    const g = document.getElementById('grano');
-    const gx = g.getContext('2d');
-    let gw, gh;
-    const tiles = [];
-    for (let t = 0; t < 6; t++){
-      const c = document.createElement('canvas');
-      c.width = c.height = 160;
-      const x = c.getContext('2d');
-      const im = x.createImageData(160, 160);
-      for (let i = 0; i < im.data.length; i += 4){
-        const v = 90 + Math.random() * 130 | 0;
-        im.data[i] = im.data[i+1] = im.data[i+2] = v;
-        im.data[i+3] = Math.random() < 0.55 ? 255 : 0;
-      }
-      x.putImageData(im, 0, 0);
-      tiles.push(c);
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.logo-trace animateMotion').forEach(function (a) { a.remove(); });
     }
-    function gsize(){
-      gw = g.width = Math.round(innerWidth / 2);
-      gh = g.height = Math.round(innerHeight / 2);
-    }
-    gsize();
-    addEventListener('resize', gsize);
-    const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let last = 0;
-    function granoPaso(t){
-      if (!quieto && t - last > 33){
-        last = t;
-        gx.clearRect(0, 0, gw, gh);
-        gx.fillStyle = gx.createPattern(tiles[Math.random() * tiles.length | 0], 'repeat');
-        gx.save();
-        gx.translate(-(Math.random() * 60 | 0), -(Math.random() * 60 | 0));
-        gx.fillRect(0, 0, gw + 60, gh + 60);
-        gx.restore();
-      }
-      requestAnimationFrame(granoPaso);
-    }
-    requestAnimationFrame(granoPaso);
-  })();
-  const NF = 28, NV = 18;
-  const ITEMS = [];
-  for (let i = 1; i <= NF; i++) ITEMS.push({ t: 'f', src: 'web/f' + String(i).padStart(2,'0') + '.jpg' });
-  for (let i = 1; i <= NV; i++) ITEMS.push({ t: 'v', src: 'web/v' + String(i).padStart(2,'0') + '.mp4' });
-  for (let i = ITEMS.length - 1; i > 0; i--){
-    const j = Math.random() * (i + 1) | 0;
-    [ITEMS[i], ITEMS[j]] = [ITEMS[j], ITEMS[i]];
-  }
-  const REVELADO = 4200;
-  const REPOSO_F = 5800;
-  const FUNDIDO  = 1300;
-  const cv = document.getElementById('lienzo');
-  const ctx = cv.getContext('2d');
-  let W, H;
-  function resize(){
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    W = cv.width  = Math.round(innerWidth  * dpr);
-    H = cv.height = Math.round(innerHeight * dpr);
-  }
-  resize();
-  addEventListener('resize', resize);
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const ahorro = navigator.connection && navigator.connection.saveData;
-  function mkVideo(){
-    const v = document.createElement('video');
-    v.muted = true;
-    v.playsInline = true;
-    v.setAttribute('playsinline', '');
-    v.preload = 'auto';
-    v.loop = false;
-    return v;
-  }
-  function cargar(item, v){
-    return new Promise(res => {
-      if (item.t === 'f'){
-        const im = new Image();
-        im.onload = () => res(im);
-        im.onerror = () => res(null);
-        im.src = item.src;
-      } else {
-        let listo = false;
-        const ok = () => { if (!listo){ listo = true; res(v); } };
-        v.oncanplaythrough = ok;
-        v.onloadeddata = ok;
-        v.onerror = () => res(null);
-        v.src = item.src;
-        v.load();
-        setTimeout(() => res(null), 15000);
-      }
-    });
-  }
-  function medidas(m){
-    return m.videoWidth ? [m.videoWidth, m.videoHeight] : [m.naturalWidth || m.width, m.naturalHeight || m.height];
-  }
-  function dibujar(m, alpha){
-    const [mw, mh] = medidas(m);
-    if (!mw) return;
-    const r = Math.max(W / mw, H / mh);
-    if (alpha !== undefined) ctx.globalAlpha = alpha;
-    ctx.drawImage(m, (W - mw * r) / 2, (H - mh * r) / 2, mw * r, mh * r);
-    ctx.globalAlpha = 1;
-  }
-  function espera(ms){ return new Promise(r => setTimeout(r, ms)); }
-  function pintar(m){
-    return new Promise(res => {
-      const mascara = document.createElement('canvas');
-      mascara.width = W; mascara.height = H;
-      const mctx = mascara.getContext('2d');
-      const t0 = performance.now();
-      const nB = 8;
-      const bandas = [];
-      for (let i = 0; i < nB; i++){
-        bandas.push({
-          y: ((i + 0.5) / nB) * H + (Math.random() - 0.5) * H / nB * 0.5,
-          dir: i % 2 ? -1 : 1,
-          ini: i * REVELADO * 0.085,
-          dur: REVELADO * 0.38,
-          onda: 2 + Math.random() * 3,
-          fase: Math.random() * Math.PI * 2,
-          prev: null
-        });
-      }
-      const rB = (H / nB) * 0.85;
-      (function paso(t){
-        const p = Math.min((t - t0) / REVELADO, 1);
-        const rel = t - t0;
-        for (const b of bandas){
-          const q = (rel - b.ini) / b.dur;
-          if (q <= 0 || b.prev === 'fin') continue;
-          const qq = Math.min(q, 1);
-          const suave = qq * qq * (3 - 2 * qq);
-          const x = b.dir > 0 ? -0.12 * W + 1.24 * W * suave : 1.12 * W - 1.24 * W * suave;
-          const desde = (b.prev === null) ? x : b.prev;
-          const pasos = Math.max(1, Math.round(Math.abs(x - desde) / (rB * 0.5)));
-          for (let s = 0; s <= pasos; s++){
-            const xx = desde + (x - desde) * (s / pasos);
-            const yy = b.y + Math.sin(xx / W * Math.PI * b.onda + b.fase) * rB * 0.35;
-            const r = rB * (0.85 + Math.random() * 0.35);
-            mctx.save();
-            mctx.translate(xx, yy);
-            mctx.scale(1.5, 1);
-            const g = mctx.createRadialGradient(0, 0, 0, 0, 0, r);
-            g.addColorStop(0, 'rgba(255,255,255,.85)');
-            g.addColorStop(0.65, 'rgba(255,255,255,.45)');
-            g.addColorStop(1, 'rgba(255,255,255,0)');
-            mctx.fillStyle = g;
-            mctx.beginPath();
-            mctx.arc(0, 0, r, 0, Math.PI * 2);
-            mctx.fill();
-            mctx.restore();
-          }
-          b.prev = (qq >= 1) ? 'fin' : x;
-        }
-        if (p > 0.8){
-          mctx.fillStyle = 'rgba(255,255,255,' + ((p - 0.8) / 0.2 * 0.25) + ')';
-          mctx.fillRect(0, 0, W, H);
-        }
-        ctx.clearRect(0, 0, W, H);
-        ctx.drawImage(mascara, 0, 0);
-        ctx.globalCompositeOperation = 'source-in';
-        dibujar(m);
-        ctx.globalCompositeOperation = 'source-over';
-        if (p < 1) requestAnimationFrame(paso); else res();
-      })(t0);
-    });
-  }
-  function mostrar(m, ms){
-    return new Promise(res => {
-      const t0 = performance.now();
-      (function paso(t){
-        ctx.clearRect(0, 0, W, H);
-        dibujar(m);
-        if (t - t0 < ms) requestAnimationFrame(paso); else res();
-      })(t0);
-    });
-  }
-  function hastaElFinal(v){
-    return new Promise(res => {
-      const tope = performance.now() + ((v.duration || 30) + 3) * 1000;
-      (function paso(t){
-        ctx.clearRect(0, 0, W, H);
-        dibujar(v);
-        if (!v.ended && t < tope) requestAnimationFrame(paso); else res();
-      })(performance.now());
-    });
-  }
-  function fundirEntrada(m, ms){
-    return new Promise(res => {
-      const t0 = performance.now();
-      (function paso(t){
-        const p = Math.min((t - t0) / ms, 1);
-        ctx.clearRect(0, 0, W, H);
-        dibujar(m, p);
-        if (p < 1) requestAnimationFrame(paso); else res();
-      })(t0);
-    });
-  }
-  function fundirANegro(m){
-    return new Promise(res => {
-      const t0 = performance.now();
-      (function paso(t){
-        const p = Math.min((t - t0) / FUNDIDO, 1);
-        ctx.clearRect(0, 0, W, H);
-        dibujar(m, 1 - p);
-        if (p < 1) requestAnimationFrame(paso); else res();
-      })(t0);
-    });
-  }
-  async function ciclo(){
-    if (ahorro || !ITEMS.length) return;
-    let vA = mkVideo(), vB = mkVideo();
-    let media = await cargar(ITEMS[0], vA);
-    let i = 0;
-    while (true){
-      const sigItem = ITEMS[(i + 1) % ITEMS.length];
-      const sigVideo = (media === vA) ? vB : vA;
-      const precarga = cargar(sigItem, sigVideo);
-      if (media){
-        if (media.play){ try { await media.play(); } catch(e){} }
-        cv.classList.remove('kb'); void cv.offsetWidth; cv.classList.add('kb');
-        if (reduced) await fundirEntrada(media, 1200);
-        else await pintar(media);
-        if (media.play){
-          if (media.ended) await mostrar(media, 800);
-          else await hastaElFinal(media);
-        } else {
-          await mostrar(media, REPOSO_F);
-        }
-        await fundirANegro(media);
-        if (media.pause) media.pause();
-      } else {
-        await espera(300);
-      }
-      const sig = await precarga;
-      media = sig || media;
-      i++;
-    }
-  }
-  ciclo();
   </script>
+
 </body>
 </html>
